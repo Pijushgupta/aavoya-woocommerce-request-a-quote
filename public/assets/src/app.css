@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.contact-7-popup{
+	@apply z-40 inset-0 fixed  overflow-y-auto;
+}
