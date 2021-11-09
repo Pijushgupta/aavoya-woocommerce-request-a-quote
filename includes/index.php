@@ -10,6 +10,9 @@ require_once aavoyaWraqAbsolute . 'includes/base.php';
 //This to register custom post-type for aavoya request  a quote
 require_once aavoyaWraqAbsolute . 'includes/aavoya_wraqrpt.php';
 
+// This to add init data to the system
+require_once aavoyaWraqAbsolute . 'includes/aavoya_initdata.php';
+
 //This to include all the helper function
 require_once aavoyaWraqAbsolute . 'includes/aavoya_wraqhelper.php';
 
@@ -18,4 +21,3 @@ require_once aavoyaWraqAbsolute . 'includes/aavoya_wraquiajax.php';
 
 //For Setting 
 require_once aavoyaWraqAbsolute . 'includes/aavoya_wraqui.php';
-//For Settings Ends Here

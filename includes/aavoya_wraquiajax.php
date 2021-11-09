@@ -8,9 +8,11 @@ Having all the ajax handling methods
 
 
 /**
- * dummy_data
+ * get_new_button_data
+ * This to provide data for newly created buttons
+ * returns json data
  */
-function form_data()
+function get_new_button_data()
 {
 	if (isset($_POST)) {
 		$nonce = $_POST['nonce'];
@@ -22,7 +24,8 @@ function form_data()
 			$data = array(
 				'id' => $aavoya_wraqsci,
 				'short_code' => '[awraqsci id="' . $aavoya_wraqsci . '"]',
-				'forms' => $formatted_forms
+				'forms' => $formatted_forms,
+				'defaultstyle' => aavoya_get_global_data()
 			);
 
 			$data = json_encode($data);
@@ -31,7 +34,7 @@ function form_data()
 		}
 	}
 }
-add_action('wp_ajax_form_data', 'form_data');
+add_action('wp_ajax_get_new_button_data', 'get_new_button_data');
 
 
 /**
@@ -217,3 +220,53 @@ function save_button_as_product_meta()
 	}
 }
 add_action('wp_ajax_save_button_as_product_meta', 'save_button_as_product_meta');
+
+
+/**
+ * save_global_setting
+ * its will handle ajax request to save global data for for button styling 
+ * @return boolean true if success
+ */
+function save_global_setting()
+{
+
+	if (isset($_POST) && wp_verify_nonce($_POST['nonce'], 'awraq_nonce')) {
+
+		$globaldata = $_POST['globaldata'];
+
+		$globaldata['globalBgColor'] 	= sanitize_hex_color($globaldata['globalBgColor']);
+		$globaldata['globalTextColor'] 	= sanitize_hex_color($globaldata['globalTextColor']);
+		$globaldata['globalCorner'] 	= intval($globaldata['globalCorner']);
+		$globaldata['globalPaddingX'] 	= intval($globaldata['globalPaddingX']);
+		$globaldata['globalPaddingY'] 	= intval($globaldata['globalPaddingY']);
+		$globaldata['globalSize'] 		= intval($globaldata['globalSize']);
+		$globaldata['globalTracking'] 	= intval($globaldata['globalTracking']);
+		$globaldata['globalText'] 		= sanitize_text_field($globaldata['globalText']);
+		$globaldata['globalCssClass'] 	= sanitize_text_field($globaldata['globalCssClass']);
+
+		echo json_encode(aavoya_add_global_settings_data($globaldata));
+
+		wp_die();
+	}
+}
+add_action('wp_ajax_save_global_setting', 'save_global_setting');
+
+
+/**
+ * get_global_setting
+ * it will provide global data for button styling
+ * @return void
+ */
+function get_global_setting()
+{
+	if (isset($_POST)) {
+
+		$nonce = $_POST['nonce'];
+
+		if (wp_verify_nonce($nonce, 'awraq_nonce')) {
+			echo json_encode(aavoya_get_global_data());
+			wp_die();
+		}
+	}
+}
+add_action('wp_ajax_get_global_setting', 'get_global_setting');

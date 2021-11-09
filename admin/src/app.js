@@ -148,22 +148,22 @@
 	 * event driven
 	 * @desc This to show/hide the button customization area when clicked on the row wordpress area
 	 */
-    jQuery(".wp-appender").on("click", ".drawer-handle", function () {
-        if (
-            jQuery(this)
-                .parent()
-                .next(".drawer")
-                .hasClass("hidden")
-        ) {
-            jQuery(this)
-                .parent()
-                .next(".drawer")
-                .removeClass("hidden");
-        } else {
-            jQuery(this)
-                .parent()
-                .next(".drawer")
-                .addClass("hidden");
+	jQuery(".wp-appender").on("click", ".drawer-handle", function () {
+		
+		let drawer = jQuery(this).parent().next(".drawer");
+
+		if (drawer.hasClass("hidden")) {
+			
+			drawer.removeClass("hidden");
+			jQuery(this).find("svg").addClass("transform rotate-90");
+
+			
+			
+		} else {
+			
+			drawer.addClass("hidden");
+			jQuery(this).find("svg").removeClass("transform rotate-90");
+			
         }
     });
 
@@ -335,17 +335,21 @@
 	});
 
 
+
+	/**
+	 * @desc event driven. This copy shortcode to clipboard on click 
+	*/
 	jQuery(".wp-appender").on("click", ".copier", function () {
 
-		let shortcodeText = jQuery(this).parent().find(".toclipboard").text();
-		
-
+		let shortcodeText = jQuery(this).parent().find(".toclipboard");
 		/**
 		 * copying to clicpboard
 		 */
-		 navigator.clipboard.writeText(shortcodeText);
+		navigator.clipboard.writeText(shortcodeText.val());
 		
 	});
+
+
 
 	/**
 	 * This initiate ajax request to the php code to delete a post(button)

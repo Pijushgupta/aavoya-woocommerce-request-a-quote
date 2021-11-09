@@ -31897,11 +31897,13 @@ video {
   margin-left: auto;
   margin-right: auto;
   max-width: 1024px;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .aavoya-wraq-tab {
+  --tw-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
   --tw-border-opacity: 0;
   border-width: 1px;
   cursor: pointer;
@@ -31926,6 +31928,23 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   --tw-text-opacity: 1;
   color: rgba(30, 64, 175, var(--tw-text-opacity));
+}
+
+.aavoya-wraq-tab.active .svg-class {
+  --tw-bg-opacity: 1;
+  background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
+}
+
+.svg-class{
+  --tw-bg-opacity: 1;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+  border-radius: 9999px;
+  display: inline;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  padding: 0.25rem;
+  fill: currentColor;
+  width: 1.5rem;
 }
 
 .tab-body-area {

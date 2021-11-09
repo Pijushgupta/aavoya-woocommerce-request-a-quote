@@ -301,3 +301,33 @@ function aavoya_waraqspm($product_id = null, $button_data = null)
 	$button_data = serialize($button_data);
 	return update_post_meta($product_id, 'aavoya_wraqp_meta_key', $button_data);
 }
+
+
+/**
+ * aavoya_add_global_settings_data
+ * This function to save to global button data for default styling 
+ * @param array $global_settings	
+ * @return boolean
+ */
+function aavoya_add_global_settings_data($global_settings = null)
+{
+	if ($global_settings != null) {
+		$global_settings = serialize($global_settings);
+		return update_option('aavoya_wraq_global_settings', $global_settings);
+	}
+
+	return false;
+}
+
+
+/**
+ * aavoya_get_global_data
+ * This function to provide to global button data for default styling
+ * @return array
+ */
+function aavoya_get_global_data()
+{
+	if (get_option('aavoya_wraq_global_settings') != null) {
+		return unserialize(get_option('aavoya_wraq_global_settings'));
+	}
+}
