@@ -102,3 +102,6 @@ input[type="range"]::-moz-range-thumb {
 	border: 1px solid rgb(230, 230, 230);
 	@apply shadow-sm;
 }
+.tool-tip {
+	@apply ml-2  px-2 py-1 bg-blue-900 text-white text-xs rounded bg-opacity-50 absolute;
+}

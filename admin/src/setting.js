@@ -4,7 +4,7 @@
 	 * @desc - even driven function to save the settings
 	 */
 	jQuery(".save-settings").on("click", function () {
-		let mainDiv = jQuery(this).parent().parent();
+		var mainDiv = jQuery(this).parent().parent();
 
 		const globalSettingData = {
 									globalCorner: mainDiv.find("#global-corner").val(),

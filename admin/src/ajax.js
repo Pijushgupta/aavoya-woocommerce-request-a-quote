@@ -27,10 +27,10 @@
                     forms_select_options +=
                         '<option value="' + key + '">' + key + " - " + value + "</option>";
                 }
-				let inlineCssStyle = 'border-radius:' + response.defaultstyle.globalCorner + 'px; padding:' + response.defaultstyle.globalPaddingY + 'px ' + response.defaultstyle.globalPaddingX + 'px; background-color:' + response.defaultstyle.globalBgColor + '; color:' + response.defaultstyle.globalTextColor + '; letter-spacing:' + response.defaultstyle.globalTracking + 'px; text-size:' + response.defaultstyle.globalSize + 'px;';
-                let row =
+				var inlineCssStyle = 'border-radius:' + response.defaultstyle.globalCorner + 'px; padding:' + response.defaultstyle.globalPaddingY + 'px ' + response.defaultstyle.globalPaddingX + 'px; background-color:' + response.defaultstyle.globalBgColor + '; color:' + response.defaultstyle.globalTextColor + '; letter-spacing:' + response.defaultstyle.globalTracking + 'px; text-size:' + response.defaultstyle.globalSize + 'px;';
+                var row =
                     '<div class="row  w-full flex  relative z-50 rounded-sm shadow mt-2 items-center bg-white row'+response.id+'" >' +
-					'<div class="table-def text-center shortcode"><input type="text" name="sshortcode" class="bg-gray-200 rounded px-6 py-2 toclipboard" value=\''+ response.short_code +'\'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-2 text-gray-400 cursor-pointer copier" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg></div>' +
+					'<div class="table-def text-center shortcode"><input type="text" name="sshortcode" class="bg-gray-200 rounded px-6 py-2 toclipboard" value=\''+ response.short_code +'\'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-2 text-gray-400 cursor-pointer copier" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg><div class="tool-tip hidden"></div></div>' +
                     '<div class="table-def text-center">' +
                     '<select name="selected_form" class="contact-7-selected">' + forms_select_options + "</select>" +
                     "</div>" +
@@ -96,32 +96,32 @@
             response = JSON.parse(response);
             
 
-            //TODO: add a conditional block to check if the responce is null or not , if not null then show the data
+            //TODO: add a conditional block to check if the response is null or not , if not null then show the data
 
             response.forEach(function (value, index, array) {
                 
-                let forms = value["forms"];
-                let forms_select_options = "";
+                var forms = value["forms"];
+                var forms_select_options = "";
 
                 for (const [key, value] of Object.entries(forms)) {
                     forms_select_options +=
                         '<option value="' + key + '">' + key + " - " + value + "</option>";
                 }
 
-                let postmeta = value["postmeta"];
+                var postmeta = value["postmeta"];
                
 
                 //preparing the data
 
 
 
-                let style = 'border-radius:'+postmeta.borderradiusvalue+'px;'+
+                var style = 'border-radius:'+postmeta.borderradiusvalue+'px;'+
                     'padding:'+ postmeta.paddingyvalue+'px '+ postmeta.paddingxvalue +'px;'+
                     'background-color:'+ postmeta.buttonbgcolor +';'+
                     'color:'+postmeta.buttontextcolor+';'+
                     'letter-spacing:' + postmeta.buttontracking + 'px;'+
                     'font-size:' +postmeta.buttonfontsize +'px;';
-                let buttonTextPrep;
+                var buttonTextPrep;
                 if(postmeta.buttontext){
                     buttonTextPrep = postmeta.buttontext;
                 }else{
@@ -129,9 +129,9 @@
                 }
 
 				
-                let row =
+                var row =
                     '<div class="row  w-full flex  relative z-30 rounded-sm shadow mt-2 items-center bg-white row'+ value.id +'" >' +
-					'<div class="table-def text-center shortcode"><input type="text" name="sshortcode" class="bg-gray-200 rounded px-6 py-2 toclipboard" value=\''+ value.short_code +'\'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-2 text-gray-400 cursor-pointer copier" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg></div>' +
+					'<div class="table-def text-center shortcode"><input type="text" name="sshortcode" class="bg-gray-200 rounded px-6 py-2 toclipboard" value=\''+ value.short_code +'\'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-2 text-gray-400 cursor-pointer copier" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg><div class="tool-tip hidden"></div></div>' +
 					
                     '<div class="table-def text-center">' +
                     '<select name="selected_form" class="contact-7-selected">' + forms_select_options + "</select>" +
@@ -204,9 +204,9 @@
 				
                 presponse.forEach(function(value, index, array){
 
-                    let buttons = value["options"];
-                    let selectOptions = "";
-					let isChecked = '';
+                    var buttons = value["options"];
+                    var selectOptions = "";
+					var isChecked = '';
 
 					
 
@@ -222,7 +222,7 @@
 					
 
 					for (const [key, value] of Object.entries(buttons)) {
-						let selected = '';
+						var selected = '';
 
 						if (value.id == buttonSelected) {
 							selected = 'selected';
@@ -236,7 +236,7 @@
 
 
 
-                    let row =
+                    var row =
                         '<div class="row  w-full flex  relative z-30 rounded-sm shadow mt-2 items-center items-center bg-white row'+ value.id +'"  pid="'+ value.id +'">' +
                         '<div class="md:w-2/5 p-2 text-left product-title"><span class="rounded-full bg-blue-100 text-blue-900 font-bold px-2 mr-1 py-1">'+value.id+'</span>' + value.title + "</div>" +
                         '<div class="md:w-1/5 text-center">' +

@@ -14,8 +14,7 @@ if (get_option('aavoya_wraq_global_settings', false) == false) {
 /**
  * preparing default data
  */
-function createDefaultData()
-{
+function createDefaultData(){
 
 	$globaldata['globalBgColor'] 	= '#1e3a8a';
 	$globaldata['globalTextColor'] 	= '#ffffff';

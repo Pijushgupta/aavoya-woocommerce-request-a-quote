@@ -1,9 +1,9 @@
-
 (function ($) {
 
-	const debug = false;
-
-    /* main tab  */
+    /**
+	 * main tab 
+	 * Left hand side tab switching mechanism   
+	 */
     jQuery(".aavoya-wraq-tab").on("click", function () {
         jQuery(".aavoya-wraq-tab").each(function () {
             if (jQuery(this).hasClass("active")) {
@@ -13,7 +13,7 @@
 
         jQuery(this).addClass("active");
 
-        let body_to_show = jQuery(this).attr("data-target");
+        var body_to_show = jQuery(this).attr("data-target");
         jQuery(".tab-body-area").each(function () {
             if (!jQuery(this).is("#" + body_to_show)) {
                 jQuery(this).addClass("hidden");
@@ -23,7 +23,9 @@
         });
     });
 
-    // This to show hide wordpress setting, if the main checkbox is checked or not
+    /**
+	 * This to show hide button setting, if the main checkbox is checked or not
+	 */
     jQuery("#enable-wordpress-id").change(function () {
         if (jQuery(this).is(":checked")) {
             jQuery("#wordpress-default-setting-area").show();
@@ -81,9 +83,9 @@
    	 */
 	jQuery(".woo-appender").on("change",".psave",function(){
 
-		let buttonSelected =  jQuery(this).parent().parent().find(".button-selected").find(":selected").val();
-		let productId = jQuery(this).parent().parent().attr('pid');
-		let status = jQuery(this).prop('checked');
+		var buttonSelected =  jQuery(this).parent().parent().find(".button-selected").find(":selected").val();
+		var productId = jQuery(this).parent().parent().attr('pid');
+		var status = jQuery(this).prop('checked');
 
 		saveStatus = updateButtonToProduct(productId, buttonSelected, status);
 
@@ -95,10 +97,10 @@
 	 * @desc dropdown(select and options) button on woo page : assigning button data and on/off bool to product
 	 */
 	jQuery('.woo-appender').on("change", ".button-selected", function () {
-		let selectedButton = jQuery(this).find("option:selected").val();
-		let parentDiv = jQuery(this).parent().parent();
-		let productId = parentDiv.attr('pid');
-		let status = parentDiv.find('.psave').prop('checked');
+		var selectedButton = jQuery(this).find("option:selected").val();
+		var parentDiv = jQuery(this).parent().parent();
+		var productId = parentDiv.attr('pid');
+		var status = parentDiv.find('.psave').prop('checked');
 
 		saveStatus = updateButtonToProduct(productId, selectedButton, status);
 
@@ -150,7 +152,7 @@
 	 */
 	jQuery(".wp-appender").on("click", ".drawer-handle", function () {
 		
-		let drawer = jQuery(this).parent().next(".drawer");
+		var drawer = jQuery(this).parent().next(".drawer");
 
 		if (drawer.hasClass("hidden")) {
 			
@@ -167,7 +169,9 @@
         }
     });
 
-    //msg close button action
+    /**
+	 * msg close button action
+	 */
     jQuery(".no-msg").on("click", function () {
         jQuery(".msg-area").fadeOut(500);
     });
@@ -180,18 +184,18 @@
 	 */
 	jQuery(".wp-appender").on("click", ".save", function () {
 
-		let alldata = jQuery(this).parent().parent().parent();
-		let nodeId = alldata.attr('id');
-		let contact7form		= alldata.parent().find(".contact-7-selected").val();
-		let borderRadiusValue 	= alldata.find(".borderradius").val();
-		let paddingXValue 		= alldata.find(".paddingx").val();
-		let paddingYValue 		= alldata.find(".paddingy").val();
-		let buttonBgColor 		= alldata.find(".bgcolor").val();
-		let buttonTextColor 	= alldata.find(".textcolor").val();
-		let buttonText 			= alldata.find(".bottontext").val(); 
-		let buttonTracking 		= alldata.find(".buttontracking").val();
-		let buttonFontSize 		= alldata.find(".buttonfontsize").val();
-		let buttonCssClass 		= alldata.find(".cssclass").val();
+		var alldata = jQuery(this).parent().parent().parent();
+		var nodeId = alldata.attr('id');
+		var contact7form		= alldata.parent().find(".contact-7-selected").val();
+		var borderRadiusValue 	= alldata.find(".borderradius").val();
+		var paddingXValue 		= alldata.find(".paddingx").val();
+		var paddingYValue 		= alldata.find(".paddingy").val();
+		var buttonBgColor 		= alldata.find(".bgcolor").val();
+		var buttonTextColor 	= alldata.find(".textcolor").val();
+		var buttonText 			= alldata.find(".bottontext").val(); 
+		var buttonTracking 		= alldata.find(".buttontracking").val();
+		var buttonFontSize 		= alldata.find(".buttonfontsize").val();
+		var buttonCssClass 		= alldata.find(".cssclass").val();
 		
 		sendSettingsData(
 			nodeId,
@@ -258,7 +262,7 @@
 			error: function (xhr, textStatus, errorThrown) { console.log("Ajax error during saving the setting data"); },
 			success: function (response) {
 				response = JSON.parse(response);
-				//console.log(response);
+				
                 if(response == true){
                     createPositiveMessage('Button Saved!');
                 }else{
@@ -269,38 +273,56 @@
 		
 	}
 
-	// this variable is used to maintain state 
+	 
 	// TODO: in the next version please remember to replace jquery with react
-	let proceed = true;
+
+	/**
+	 * this variable is used to maintain state
+	 */
+	var proceed = true;
 
 	/**
 	 * This is for "Delete" button action
 	 */
 	jQuery(".wp-appender").on("click", ".delete", function () {
 
-		let alldata = jQuery(this).parent().parent().parent();
+		var alldata = jQuery(this).parent().parent().parent();
 
-		//getting the post id from the DOM
-		let nodeId = alldata.attr('id');
+		/**
+		 * getting the post id from the DOM
+		 */
+		var nodeId = alldata.attr('id');
 
-		//cheking the state if its ok to procced 
+		/**
+		 * checking the state if its ok to proceed
+		 */
 		if (proceed == true) {
 
-			// adding post id to the popup window
+			/**
+			 * adding post id to the popup window
+			 */
 			jQuery('.deletewarning').attr('postid', nodeId);
 
-			//removing hidden class from the popup
+			/**
+			 * removing hidden class from the popup
+			 */
 			jQuery('.deletewarning').removeClass('hidden');
 		} 	
 	});
 
-	//this for close button 
+	/**
+	 * this for close button
+	 */
 	jQuery(".close").on("click", function () {
 		
-		//adding hidden class
+		/**
+		 * adding hidden class
+		 */
 		jQuery(this).parent().parent().addClass("hidden");
 		
-		//altering state to true for next cycle 
+		/**
+		 * altering state to true for next cycle
+		 */
 		proceed = true;
 	});
 
@@ -308,12 +330,13 @@
 
 	/**
 	 * @desc Event Driven
-	 * 
 	 * This is for the action of "Yes" button event on notification, after clicking "Delete" button
 	 */
 	jQuery(".del-yes").on("click", function () {
 		
-		//the code for state detection 
+		/**
+		 * the code for state detection
+		 */
 		if (proceed == false) {
 
 			return;
@@ -321,12 +344,14 @@
 		} else {
 
 			proceed = false;
-			let popup = jQuery(this).parent().parent().parent().parent().parent();
-			let postid = popup.attr("postid");
+			var popup = jQuery(this).parent().parent().parent().parent().parent();
+			var postid = popup.attr("postid");
 
 			popup.addClass('hidden');
 			deleteSettingData(postid);
-			//lastly this resets the state
+			/**
+			 * lastly this resets the state
+			 */
 			proceed = true;
 
 		}
@@ -337,15 +362,46 @@
 
 
 	/**
-	 * @desc event driven. This copy shortcode to clipboard on click 
+	 * event driven. 
+	 * @desc This copy shortcode to clipboard on click 
 	*/
 	jQuery(".wp-appender").on("click", ".copier", function () {
-
-		let shortcodeText = jQuery(this).parent().find(".toclipboard");
+		
+		var shortCodeDiv = jQuery(this).parent();
+		
+		var shortcodeText = shortCodeDiv.find(".toclipboard");
+		var shortCodeToolTipDiv = shortCodeDiv.find(".tool-tip");
+		
 		/**
 		 * copying to clicpboard
 		 */
-		navigator.clipboard.writeText(shortcodeText.val());
+
+		try {
+			navigator.clipboard.writeText(shortcodeText.val());
+			
+			shortCodeToolTipDiv.html('Copied!');
+			shortCodeToolTipDiv.addClass('inline');
+			shortCodeToolTipDiv.removeClass('hidden');
+
+			setTimeout(function () {
+				shortCodeToolTipDiv.removeClass('inline');
+				shortCodeToolTipDiv.addClass('hidden');
+			} ,2000);
+
+		} catch (exc) {
+			
+			shortCodeToolTipDiv.html('SSL issue!');
+			shortCodeToolTipDiv.addClass('inline');
+			shortCodeToolTipDiv.removeClass('hidden');
+			setTimeout(function () {
+				shortCodeToolTipDiv.removeClass('inline');
+				shortCodeToolTipDiv.addClass('hidden')
+			} ,2000);
+			
+		}
+
+
+
 		
 	});
 
@@ -366,7 +422,7 @@
 				nodeid: postid,
 				nonce:jQuery("#awraqnonce").val(),
 			},
-			error: function (xhr, textStatus, errorThrown) { console.log("Ajax error during deleting data 1"); },
+			error: function (xhr, textStatus, errorThrown) { console.log("Ajax error during deleting data"); },
 			success: function (response) {
 				response = JSON.parse(response);
 				if (response == true) {
@@ -392,7 +448,7 @@
 		if(postid == null){
 			return false;
 		}
-		let divselector = '.row'+postid;
+		var divselector = '.row'+postid;
 		jQuery(divselector).fadeOut(300,function(){
 			jQuery(this).remove();
 		});
@@ -403,7 +459,7 @@
      * @param textToShow - this to have message text that will get added
      */
 	 function createPositiveMessage(textToShow) {
-        let message = '<div class="modal z-40 bottom-0 right-0 fixed  overflow-y-auto w-96">'+
+        var message = '<div class="modal z-40 bottom-0 right-0 fixed  overflow-y-auto w-96">'+
             '<div class="bg-white border border-gray-100  m-4 rounded shadow ">'+
             '<svg class="w-8 h-8 text-blue-800 float-right -mr-3 -mt-3 bg-white rounded-full close cursor-pointer shadow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'+
             '<div class="modal-body  modal-body overflow-hidden rounded "><div class="border-l-8 border-blue-900 p-4"><span class="block">'+ textToShow +'</span></div></div>'+
@@ -419,7 +475,7 @@
      * @param textToShow - this to have message text that will get added
      */
     function createNegativeMessage(textToShow){
-        let message = '<div class="modal z-40 bottom-0 right-0 fixed  overflow-y-auto w-96">'+
+        var message = '<div class="modal z-40 bottom-0 right-0 fixed  overflow-y-auto w-96">'+
             '<div class="bg-white border border-gray-100  m-4 rounded shadow ">'+
             '<svg class="w-8 h-8 text-red-600 float-right -mr-3 -mt-3 bg-white rounded-full close cursor-pointer shadow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'+
             '<div class="modal-body  modal-body overflow-hidden rounded "><div class="border-l-8 border-red-600 p-4"><span class="block">'+ textToShow + '</span></div></div>'+
@@ -566,10 +622,10 @@
                     forms_select_options +=
                         '<option value="' + key + '">' + key + " - " + value + "</option>";
                 }
-				let inlineCssStyle = 'border-radius:' + response.defaultstyle.globalCorner + 'px; padding:' + response.defaultstyle.globalPaddingY + 'px ' + response.defaultstyle.globalPaddingX + 'px; background-color:' + response.defaultstyle.globalBgColor + '; color:' + response.defaultstyle.globalTextColor + '; letter-spacing:' + response.defaultstyle.globalTracking + 'px; text-size:' + response.defaultstyle.globalSize + 'px;';
-                let row =
+				var inlineCssStyle = 'border-radius:' + response.defaultstyle.globalCorner + 'px; padding:' + response.defaultstyle.globalPaddingY + 'px ' + response.defaultstyle.globalPaddingX + 'px; background-color:' + response.defaultstyle.globalBgColor + '; color:' + response.defaultstyle.globalTextColor + '; letter-spacing:' + response.defaultstyle.globalTracking + 'px; text-size:' + response.defaultstyle.globalSize + 'px;';
+                var row =
                     '<div class="row  w-full flex  relative z-50 rounded-sm shadow mt-2 items-center bg-white row'+response.id+'" >' +
-					'<div class="table-def text-center shortcode"><input type="text" name="sshortcode" class="bg-gray-200 rounded px-6 py-2 toclipboard" value=\''+ response.short_code +'\'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-2 text-gray-400 cursor-pointer copier" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg></div>' +
+					'<div class="table-def text-center shortcode"><input type="text" name="sshortcode" class="bg-gray-200 rounded px-6 py-2 toclipboard" value=\''+ response.short_code +'\'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-2 text-gray-400 cursor-pointer copier" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg><div class="tool-tip hidden"></div></div>' +
                     '<div class="table-def text-center">' +
                     '<select name="selected_form" class="contact-7-selected">' + forms_select_options + "</select>" +
                     "</div>" +
@@ -635,32 +691,32 @@
             response = JSON.parse(response);
             
 
-            //TODO: add a conditional block to check if the responce is null or not , if not null then show the data
+            //TODO: add a conditional block to check if the response is null or not , if not null then show the data
 
             response.forEach(function (value, index, array) {
                 
-                let forms = value["forms"];
-                let forms_select_options = "";
+                var forms = value["forms"];
+                var forms_select_options = "";
 
                 for (const [key, value] of Object.entries(forms)) {
                     forms_select_options +=
                         '<option value="' + key + '">' + key + " - " + value + "</option>";
                 }
 
-                let postmeta = value["postmeta"];
+                var postmeta = value["postmeta"];
                
 
                 //preparing the data
 
 
 
-                let style = 'border-radius:'+postmeta.borderradiusvalue+'px;'+
+                var style = 'border-radius:'+postmeta.borderradiusvalue+'px;'+
                     'padding:'+ postmeta.paddingyvalue+'px '+ postmeta.paddingxvalue +'px;'+
                     'background-color:'+ postmeta.buttonbgcolor +';'+
                     'color:'+postmeta.buttontextcolor+';'+
                     'letter-spacing:' + postmeta.buttontracking + 'px;'+
                     'font-size:' +postmeta.buttonfontsize +'px;';
-                let buttonTextPrep;
+                var buttonTextPrep;
                 if(postmeta.buttontext){
                     buttonTextPrep = postmeta.buttontext;
                 }else{
@@ -668,9 +724,9 @@
                 }
 
 				
-                let row =
+                var row =
                     '<div class="row  w-full flex  relative z-30 rounded-sm shadow mt-2 items-center bg-white row'+ value.id +'" >' +
-					'<div class="table-def text-center shortcode"><input type="text" name="sshortcode" class="bg-gray-200 rounded px-6 py-2 toclipboard" value=\''+ value.short_code +'\'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-2 text-gray-400 cursor-pointer copier" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg></div>' +
+					'<div class="table-def text-center shortcode"><input type="text" name="sshortcode" class="bg-gray-200 rounded px-6 py-2 toclipboard" value=\''+ value.short_code +'\'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-2 text-gray-400 cursor-pointer copier" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg><div class="tool-tip hidden"></div></div>' +
 					
                     '<div class="table-def text-center">' +
                     '<select name="selected_form" class="contact-7-selected">' + forms_select_options + "</select>" +
@@ -743,9 +799,9 @@
 				
                 presponse.forEach(function(value, index, array){
 
-                    let buttons = value["options"];
-                    let selectOptions = "";
-					let isChecked = '';
+                    var buttons = value["options"];
+                    var selectOptions = "";
+					var isChecked = '';
 
 					
 
@@ -761,7 +817,7 @@
 					
 
 					for (const [key, value] of Object.entries(buttons)) {
-						let selected = '';
+						var selected = '';
 
 						if (value.id == buttonSelected) {
 							selected = 'selected';
@@ -775,7 +831,7 @@
 
 
 
-                    let row =
+                    var row =
                         '<div class="row  w-full flex  relative z-30 rounded-sm shadow mt-2 items-center items-center bg-white row'+ value.id +'"  pid="'+ value.id +'">' +
                         '<div class="md:w-2/5 p-2 text-left product-title"><span class="rounded-full bg-blue-100 text-blue-900 font-bold px-2 mr-1 py-1">'+value.id+'</span>' + value.title + "</div>" +
                         '<div class="md:w-1/5 text-center">' +
@@ -798,7 +854,7 @@
 	 * @desc - even driven function to save the settings
 	 */
 	jQuery(".save-settings").on("click", function () {
-		let mainDiv = jQuery(this).parent().parent();
+		var mainDiv = jQuery(this).parent().parent();
 
 		const globalSettingData = {
 									globalCorner: mainDiv.find("#global-corner").val(),

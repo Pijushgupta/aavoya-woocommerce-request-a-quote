@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 
 /**
  * This to create a new post or to update an already existing post.
- * Here we are refering shortcode as post entry.
+ * Here we are referring shortcode as post entry.
  * @param integer $aavoya_post_id
  * @return  integer post ID
  */
@@ -51,9 +51,7 @@ function aavoya_wraqgc7fl()
  * @return array
  *
  * */
-
-function aavoya_wraqgap()
-{
+function aavoya_wraqgap(){
 
 
 	/**
@@ -106,8 +104,7 @@ function aavoya_wraqgap()
  * @param int $id
  * @return array
  */
-function aavoya_gpm($id = null)
-{
+function aavoya_gpm($id = null){
 	if ($id == null) return false;
 
 	return aavoya_post_meta_defaults(unserialize(get_post_meta($id, 'aavoya_wraq_meta_key', true)));
@@ -120,12 +117,11 @@ function aavoya_gpm($id = null)
  * @param  array $post_meta_defaults
  * @return array
  */
-function aavoya_post_meta_defaults($post_meta_defaults = null)
-{
+function aavoya_post_meta_defaults($post_meta_defaults = null){
 	if ($post_meta_defaults == null) return false;
 
 
-	//TODO: add function to get default data from database
+
 	foreach ($post_meta_defaults as $key => $data) {
 
 		switch ($key) {

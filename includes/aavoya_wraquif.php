@@ -28,7 +28,7 @@ class aavoya_wraquif extends base
 
 		return '<div class="wordpress-form-area">
 					<div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
-						<label class="text-xs tracking-wide font-medium" for="enable-wordpress-id"><span>' . __('Enable for Wordpress Pages and Posts.', 'aavoya-woocommerce-request-a-quote') . '</label>
+						<label class="text-xs tracking-wide font-medium" for="enable-wordpress-id"><span>' . __('Enable Buttons.', 'aavoya-woocommerce-request-a-quote') . '</label>
 						<input class="enable-wordpress-class" id="enable-wordpress-id" name="enable-wordpress" type="checkbox" ' . $checked . '>
 					</div>
 					<div class="py-2 px-2 wp-form-map-table">
@@ -67,7 +67,7 @@ class aavoya_wraquif extends base
 						<div id="woo-default-setting-area" class="' . $hidden . ' relative ">
 							<div class="woo-appender">';
 		if (aavoyaWooCom != true) {
-			$html .= 'Woo Not Installed';
+			$html .= 'WooCommerce Not Installed';
 		}
 
 		$html .= '</div></div></div></div>';

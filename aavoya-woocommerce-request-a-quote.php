@@ -4,10 +4,10 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Plugin Name: Hyper Request a Quote
- * Plugin URI: https://www.aavoya.co/hyper-request-a-quote
- * Description: Add Request a quote button on single products or on Product Categories or Product tags. Bundle Multiple Products to send as a single quotation mail. It can work with or without woocommerce. 
- * Version: 2021.4
+ * Plugin Name: Aavoya Request a Quote
+ * Plugin URI: https://www.aavoya.co/aavoya-request-a-quote
+ * Description: Add Request a quote button on single products or on Product Categories or Product tags.
+ * Version: 2021.11
  * Requires PHP: 5
  * Author: Pijush Gupta
  * Author URI: https://www.linkedin.com/in/pijush-gupta-php/
@@ -107,6 +107,7 @@ register_deactivation_hook(__FILE__, 'aavoyaOnDeactivation');
  */
 function aavoyaOnUninstall()
 {
+	
 }
 register_uninstall_hook(__FILE__, 'aavoyaOnUninstall');
 
