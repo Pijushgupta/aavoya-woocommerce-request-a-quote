@@ -237,7 +237,7 @@
 
 
                     var row =
-                        '<div class="row  w-full flex  relative z-30 rounded-sm shadow mt-2 items-center items-center bg-white row'+ value.id +'"  pid="'+ value.id +'">' +
+                        '<div class="row  w-full flex  justify-between relative z-30 rounded-sm shadow mt-2 items-center items-center bg-white row'+ value.id +'"  pid="'+ value.id +'">' +
                         '<div class="md:w-2/5 p-2 text-left product-title"><span class="rounded-full bg-blue-100 text-blue-900 font-bold px-2 mr-1 py-1">'+value.id+'</span>' + value.title + "</div>" +
                         '<div class="md:w-1/5 text-center">' +
                         '<select name="selected_button" class="w-full code button-selected border border-gray-500 ">' + selectOptions + "</select>" +
