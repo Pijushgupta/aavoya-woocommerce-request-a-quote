@@ -243,21 +243,21 @@ function save_global_setting()
 
 		$globaldata['globalBgColor'] 		= ($_POST['globaldata']['globalBgColor']) ? sanitize_hex_color($_POST['globaldata']['globalBgColor']) : '';
 
-		$globaldata['globalTextColor'] 		= ($_POST['globaldata']['globalTextColor']) ? sanitize_hex_color($_POST['globaldata']['globalTextColor']) : '';
+		$globaldata['globalTextColor']		= ($_POST['globaldata']['globalTextColor']) ? sanitize_hex_color($_POST['globaldata']['globalTextColor']) : '';
 
-		$globaldata['globalBorderRadius'] 	= ($_POST['globaldata']['globalBorderRadius']) ? intval($_POST['globaldata']['globalBorderRadius']) : '';
+		$globaldata['globalBorderRadius']	= ($_POST['globaldata']['globalBorderRadius']) ? intval($_POST['globaldata']['globalBorderRadius']) : '';
 
-		$globaldata['globalPaddingX'] 		= ($_POST['globaldata']['globalPaddingX']) ? intval($_POST['globaldata']['globalPaddingX']) : '';
+		$globaldata['globalPaddingX']		= ($_POST['globaldata']['globalPaddingX']) ? intval($_POST['globaldata']['globalPaddingX']) : '';
 
-		$globaldata['globalPaddingY'] 		= ($_POST['globaldata']['globalPaddingY']) ? intval($_POST['globaldata']['globalPaddingY']) : '';
+		$globaldata['globalPaddingY']		= ($_POST['globaldata']['globalPaddingY']) ? intval($_POST['globaldata']['globalPaddingY']) : '';
 
-		$globaldata['globalFontSize'] 		= ($_POST['globaldata']['globalFontSize']) ? intval($_POST['globaldata']['globalFontSize']) : '';
+		$globaldata['globalFontSize']		= ($_POST['globaldata']['globalFontSize']) ? intval($_POST['globaldata']['globalFontSize']) : '';
 
-		$globaldata['globalTracking'] 		= ($_POST['globaldata']['globalTracking']) ? intval($_POST['globaldata']['globalTracking']) : '';
+		$globaldata['globalTracking']		= ($_POST['globaldata']['globalTracking']) ? intval($_POST['globaldata']['globalTracking']) : '';
 
-		$globaldata['globalText'] 			= ($_POST['globaldata']['globalText']) ? sanitize_text_field($_POST['globaldata']['globalText']) : '';
+		$globaldata['globalText']			= ($_POST['globaldata']['globalText']) ? sanitize_text_field($_POST['globaldata']['globalText']) : '';
 
-		$globaldata['globalCssClass'] 		= ($_POST['globaldata']['globalCssClass']) ? sanitize_html_class($_POST['globaldata']['globalCssClass']) : '';
+		$globaldata['globalCssClass']		= ($_POST['globaldata']['globalCssClass']) ? sanitize_html_class($_POST['globaldata']['globalCssClass']) : '';
 
 
 		/**
