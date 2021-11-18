@@ -190,14 +190,14 @@ class aavoya_wraqui extends base
 				<?php $wordpress_hraq_form_object = $this->load('aavoya_wraquif'); ?>
 
 				<div id="aavoya-wraq-wordpress" class="tab-body-area border w-full  bg-white">
-					<?php echo $wordpress_hraq_form_object->form(); ?>
+					<?php _e($wordpress_hraq_form_object->form(),'aavoya-woocommerce-request-a-quote'); ?>
 				</div>
 
 				<div id="aavoya-wraq-woocommerce" class="hidden tab-body-area border w-full  bg-white">
-					<?php echo $wordpress_hraq_form_object->woo_form(); ?>
+					<?php _e($wordpress_hraq_form_object->woo_form(),'aavoya-woocommerce-request-a-quote'); ?>
 				</div>
 				<div id="aavoya-setting" class="hidden tab-body-area border w-full  bg-white">
-					<?php echo $wordpress_hraq_form_object->awarq_setting(); ?>
+					<?php _e($wordpress_hraq_form_object->awarq_setting(),'aavoya-woocommerce-request-a-quote'); ?>
 				</div>
 
 

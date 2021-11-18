@@ -26,7 +26,7 @@
     /**
 	 * This to show hide button setting, if the main checkbox is checked or not
 	 */
-    jQuery("#enable-wordpress-id").change(function () {
+    jQuery("#enable-wordpress-id").on("change", function () {
         if (jQuery(this).is(":checked")) {
             jQuery("#wordpress-default-setting-area").show();
 			updateFormAreatoggleInformation('wp',true);
@@ -36,8 +36,10 @@
         }
     });
 
-    // This to show hide woocommerce setting, if the main checkbox checked or not
-    jQuery("#enable-woo-id").change(function(){
+    /**
+	* This to show hide woocommerce setting, if the main checkbox checked or not
+   	*/
+    jQuery("#enable-woo-id").on("change", function(){
 		if (jQuery(this).is(":checked")) {
 			jQuery("#woo-default-setting-area").show();
 			updateFormAreatoggleInformation('wo',true);

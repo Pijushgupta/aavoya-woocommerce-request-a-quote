@@ -37,25 +37,4 @@
 	});
 
 
-	/**
-	 * @desc event driven - On page load it load global settings data
-	 */
-	jQuery().ready(function () {
-		
-		jQuery.ajax({
-			url: ajaxurl,
-			type: "POST",
-			dataType: "json",
-			data: {
-				action: "get_global_setting",
-				nonce: jQuery("#awraqnonce").val()
-			},
-			error: function (xhr, textStatus, errorThrown) { console.log(errorThrown) },
-			success: function (response) {
-				
-				console.log(response);
-			}
-		});
-	});
-
 })(jQuery);

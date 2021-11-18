@@ -231,19 +231,40 @@ function save_global_setting()
 {
 
 	if (isset($_POST) && wp_verify_nonce($_POST['nonce'], 'awraq_nonce')) {
-
+		/**
+		 * Raw post data to be sanitized
+		 */
 		$globaldata = $_POST['globaldata'];
 
-		$globaldata['globalBgColor'] 	= sanitize_hex_color($globaldata['globalBgColor']);
-		$globaldata['globalTextColor'] 	= sanitize_hex_color($globaldata['globalTextColor']);
-		$globaldata['globalCorner'] 	= intval($globaldata['globalCorner']);
-		$globaldata['globalPaddingX'] 	= intval($globaldata['globalPaddingX']);
-		$globaldata['globalPaddingY'] 	= intval($globaldata['globalPaddingY']);
-		$globaldata['globalSize'] 		= intval($globaldata['globalSize']);
-		$globaldata['globalTracking'] 	= intval($globaldata['globalTracking']);
-		$globaldata['globalText'] 		= sanitize_text_field($globaldata['globalText']);
-		$globaldata['globalCssClass'] 	= sanitize_text_field($globaldata['globalCssClass']);
+		/**
+		 * Sanitizing the data going to database as options
+		 */
 
+
+		$globaldata['globalBgColor'] 		= ($_POST['globaldata']['globalBgColor']) ? sanitize_hex_color($_POST['globaldata']['globalBgColor']) : '';
+
+		$globaldata['globalTextColor'] 		= ($_POST['globaldata']['globalTextColor']) ? sanitize_hex_color($_POST['globaldata']['globalTextColor']) : '';
+
+		$globaldata['globalBorderRadius'] 	= ($_POST['globaldata']['globalBorderRadius']) ? intval($_POST['globaldata']['globalBorderRadius']) : '';
+
+		$globaldata['globalPaddingX'] 		= ($_POST['globaldata']['globalPaddingX']) ? intval($_POST['globaldata']['globalPaddingX']) : '';
+
+		$globaldata['globalPaddingY'] 		= ($_POST['globaldata']['globalPaddingY']) ? intval($_POST['globaldata']['globalPaddingY']) : '';
+
+		$globaldata['globalFontSize'] 		= ($_POST['globaldata']['globalFontSize']) ? intval($_POST['globaldata']['globalFontSize']) : '';
+
+		$globaldata['globalTracking'] 		= ($_POST['globaldata']['globalTracking']) ? intval($_POST['globaldata']['globalTracking']) : '';
+
+		$globaldata['globalText'] 			= ($_POST['globaldata']['globalText']) ? sanitize_text_field($_POST['globaldata']['globalText']) : '';
+
+		$globaldata['globalCssClass'] 		= ($_POST['globaldata']['globalCssClass']) ? sanitize_html_class($_POST['globaldata']['globalCssClass']) : '';
+
+
+		/**
+		 * this sending either TRUE on successful update else False
+		 * 
+		 * no need to send this back to the frontend But this might be in use in future for feature addition 
+		 */
 		echo json_encode(aavoya_add_global_settings_data($globaldata));
 
 		wp_die();
