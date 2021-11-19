@@ -22,10 +22,12 @@ function get_new_button_data()
 			$aavoya_wraqsci = aavoya_wraqcous();
 
 			$data = array(
-				'id' => $aavoya_wraqsci,
+
+				'id' => intval($aavoya_wraqsci),
 				'short_code' => '[awraqsci id="' . $aavoya_wraqsci . '"]',
 				'forms' => $formatted_forms,
 				'defaultstyle' => aavoya_get_global_data()
+
 			);
 
 			$data = json_encode($data);

@@ -11,10 +11,11 @@ if (!defined('ABSPATH')) {
 /**
  * This to create a new post or to update an already existing post.
  * Here we are referring shortcode as post entry.
+ * Here you can find more about 'wp_insert_post()' https://developer.wordpress.org/reference/functions/wp_insert_post/
  * @param integer $aavoya_post_id
  * @return  integer post ID
  */
-function aavoya_wraqcous($aavoya_post_id = '')
+function aavoya_wraqcous($aavoya_post_id = '', $post_status = 'published')
 {
 	$post_arguments_array = array(
 		'ID' => $aavoya_post_id,
@@ -25,6 +26,7 @@ function aavoya_wraqcous($aavoya_post_id = '')
 }
 
 
+
 /**
  * This to get a list of forms of contact 7
  * @return mixed
@@ -33,25 +35,46 @@ function aavoya_wraqgc7fl()
 {
 
 	$argument = array(
+		/**
+		 * wpcf7_contact_form - This is the post type of contact form 7 .
+		 * we may need to change in case contact 7 form change it in future.
+		 */
 		'post_type' => 'wpcf7_contact_form',
 		'posts_per_page' => -1
 	);
 
+
+	/**
+	 * $contact_7_forms : contains all contact 7 forms(post of post type wpcf7_contact_form).
+	 * Here you can find about 'get_posts()' https://developer.wordpress.org/reference/functions/get_posts/
+	 */
 	$contact_7_forms = get_posts($argument);
+
+
+	/**
+	 * An empty array to hold contact forms with title and id.
+	 */
 	$formatted_forms = array();
+
+
 	foreach ($contact_7_forms as $contact_7_form) {
-		$formatted_forms[$contact_7_form->ID] = $contact_7_form->post_title;
+
+		$formatted_forms[$contact_7_form->ID] = esc_html($contact_7_form->post_title);
 	}
 
 	return $formatted_forms;
 }
+
+
+
 
 /**
  * This to get all existing list of shortcodes
  * @return array
  *
  * */
-function aavoya_wraqgap(){
+function aavoya_wraqgap()
+{
 
 
 	/**
@@ -104,7 +127,8 @@ function aavoya_wraqgap(){
  * @param int $id
  * @return array
  */
-function aavoya_gpm($id = null){
+function aavoya_gpm($id = null)
+{
 	if ($id == null) return false;
 
 	return aavoya_post_meta_defaults(unserialize(get_post_meta($id, 'aavoya_wraq_meta_key', true)));
@@ -117,7 +141,8 @@ function aavoya_gpm($id = null){
  * @param  array $post_meta_defaults
  * @return array
  */
-function aavoya_post_meta_defaults($post_meta_defaults = null){
+function aavoya_post_meta_defaults($post_meta_defaults = null)
+{
 	if ($post_meta_defaults == null) return false;
 
 
@@ -319,7 +344,8 @@ function aavoya_add_global_settings_data($global_settings = null)
 /**
  * aavoya_get_global_data
  * This function to provide to global button data for default styling
- * @return array
+ * @return array 
+ * 
  */
 function aavoya_get_global_data()
 {
