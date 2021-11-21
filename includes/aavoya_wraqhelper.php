@@ -4,9 +4,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-/**
- * This file For helper functions
- */
+/*This file For helper functions*/
 
 /**
  * This to create a new post or to update an already existing post.
@@ -24,6 +22,54 @@ function aavoya_wraqcous($aavoya_post_id = '', $post_status = 'published')
 	);
 	return wp_insert_post($post_arguments_array);
 }
+
+
+
+/**
+ * aavoya_apply_global_styles
+ * @param  int $button_id 
+ * @return int/boolean int on success and boolean false on failure
+ */
+function aavoya_apply_global_style($button_id = null)
+{
+
+	if ($button_id == null) {
+		return;
+	}
+	/**
+	 * getting default/global settings from database  
+	 */
+	$global_style = aavoya_get_global_data();
+
+	/**
+	 * sanitizing/escaping again before handling 
+	 * Its kind of stupid to add this validation here where we are getting data from database and adding it back to database
+	 * Since i don't want this plugin validation get stuck at any point for data validation/sanitization/escaping
+	 * 
+	 * It may create performance issues 
+	 */
+	$button_meta = array(
+		'buttonbgcolor'		=> ($global_style['globalbuttonbgcolor']) ? sanitize_hex_color($global_style['globalbuttonbgcolor']) : null,
+		'buttontextcolor'	=> ($global_style['globalbuttontextcolor']) ? sanitize_hex_color($global_style['globalbuttontextcolor']) : null,
+		'borderradiusvalue'	=> ($global_style['globalborderradiusvalue']) ? intval($global_style['globalborderradiusvalue']) : null,
+		'paddingxvalue'		=> ($global_style['globalpaddingxvalue']) ? intval($global_style['globalpaddingxvalue']) : null,
+		'paddingyvalue'		=> ($global_style['globalpaddingyvalue']) ? intval($global_style['globalpaddingyvalue']) : null,
+		'buttonfontsize'	=> ($global_style['globalbuttonfontsize']) ? intval($global_style['globalbuttonfontsize']) : null,
+		'buttontracking'	=> ($global_style['globalbuttontracking']) ? intval($global_style['globalbuttontracking']) : null,
+		'buttontext'		=> ($global_style['globalbuttontext']) ? sanitize_text_field($global_style['globalbuttontext']) : null,
+		'buttoncssclass'	=> ($global_style['globalbuttoncssclass']) ? sanitize_text_field($global_style['globalbuttoncssclass']) : null
+
+	);
+
+	/**
+	 * adding button meta
+	 * more about add_post_meta() https://developer.wordpress.org/reference/functions/add_post_meta/
+	 */
+
+
+	return add_post_meta($button_id, 'aavoya_wraq_meta_key', serialize($button_meta));
+}
+
 
 
 
@@ -131,75 +177,9 @@ function aavoya_gpm($id = null)
 {
 	if ($id == null) return false;
 
-	return aavoya_post_meta_defaults(unserialize(get_post_meta($id, 'aavoya_wraq_meta_key', true)));
+	return return unserialize(get_post_meta($id, 'aavoya_wraq_meta_key', true));
 }
 
-
-/**
- * aavoya_post_meta_defaults
- * This to provide defaults meta as button css properties
- * @param  array $post_meta_defaults
- * @return array
- */
-function aavoya_post_meta_defaults($post_meta_defaults = null)
-{
-	if ($post_meta_defaults == null) return false;
-
-
-
-	foreach ($post_meta_defaults as $key => $data) {
-
-		switch ($key) {
-
-			case "borderradiusvalue":
-				if ($data == 0) {
-					$post_meta_defaults[$key] = 8;
-				}
-				break;
-			case "paddingxvalue":
-				if ($data == 0) {
-					$post_meta_defaults[$key] = 12;
-				}
-				break;
-			case "paddingyvalue":
-				if ($data == 0) {
-					$post_meta_defaults[$key] = 8;
-				}
-				break;
-			case "buttonbgcolor":
-				if ($data == null) {
-					$post_meta_defaults[$key] = "#cccccc";
-				}
-				break;
-			case "buttontextcolor":
-				if ($data == null) {
-					$post_meta_defaults[$key] = "#000000";
-				}
-				break;
-			case "buttontext":
-				if ($data == "") {
-					$post_meta_defaults[$key] = "Button";
-				}
-				break;
-			case "buttontracking":
-				if ($data == 0) {
-					$post_meta_defaults[$key] = 8;
-				}
-				break;
-			case "buttonfontsize":
-				if ($data == 0) {
-					$post_meta_defaults[$key] = 16;
-				}
-				break;
-			case "buttoncssclass":
-				if ($data == "") {
-					$post_meta_defaults[$key] = "aavoya-btn";
-				}
-				break;
-		}
-	}
-	return $post_meta_defaults;
-}
 
 
 /**
@@ -294,10 +274,10 @@ function aavoya_wraqwop()
 	 */
 	foreach ($wraq_products as $key => $wraq_product) {
 
-		$container[$key]['id'] = $wraq_product->ID;
-		$container[$key]['title'] = $wraq_product->post_title;
-		$container[$key]['options'] = $button_shortcodes;
-		$container[$key]['button'] = unserialize(get_post_meta($wraq_product->ID, 'aavoya_wraqp_meta_key', true));
+		$container[$key]['id']		= $wraq_product->ID;
+		$container[$key]['title']	= $wraq_product->post_title;
+		$container[$key]['options']	= $button_shortcodes;
+		$container[$key]['button']	= unserialize(get_post_meta($wraq_product->ID, 'aavoya_wraqp_meta_key', true));
 	}
 
 	/**

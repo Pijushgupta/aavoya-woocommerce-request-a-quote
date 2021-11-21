@@ -14,17 +14,21 @@ if (get_option('aavoya_wraq_global_settings', false) == false) {
 /**
  * preparing default data
  */
-function createDefaultData(){
+function createDefaultData()
+{
+	//TODO: fix the nemes accondingly local vars
+	//
 
-	$globaldata['globalBgColor'] 	= '#1e3a8a';
-	$globaldata['globalTextColor'] 	= '#ffffff';
-	$globaldata['globalCorner'] 	= 8;
-	$globaldata['globalPaddingX'] 	= 30;
-	$globaldata['globalPaddingY'] 	= 10;
-	$globaldata['globalSize'] 		= 21;
-	$globaldata['globalTracking'] 	= 6;
-	$globaldata['globalText'] 		= 'Button';
-	$globaldata['globalCssClass'] 	= 'aavoya-wraq-btn';
+
+	$globaldata['globalbuttonbgcolor']			= '#1e3a8a';
+	$globaldata['globalbuttontextcolor']		= '#ffffff';
+	$globaldata['globalborderradiusvalue']		= 8;
+	$globaldata['globalpaddingxvalue']			= 30;
+	$globaldata['globalpaddingyvalue']			= 10;
+	$globaldata['globalbuttonfontsize']			= 21;
+	$globaldata['globalbuttontracking']			= 6;
+	$globaldata['globalbuttontext']				= 'Button';
+	$globaldata['globalbuttoncssclass']			= 'aavoya-wraq-btn';
 
 	return serialize($globaldata);
 }

@@ -18,15 +18,30 @@ function get_new_button_data()
 		$nonce = $_POST['nonce'];
 		if (wp_verify_nonce($nonce, 'awraq_nonce')) {
 
+
+			/**
+			 * getting all the contact 7 forms 
+			 */
 			$formatted_forms = aavoya_wraqgc7fl();
+
+			/**
+			 * creating a button(post) and getting the ID back
+			 */
 			$aavoya_wraqsci = aavoya_wraqcous();
+
+
+			/**
+			 * adding global style to the newly created button via the below function
+			 */
+			aavoya_apply_global_style(aavoya_wraqsci);
+
 
 			$data = array(
 
 				'id' => intval($aavoya_wraqsci),
 				'short_code' => '[awraqsci id="' . $aavoya_wraqsci . '"]',
 				'forms' => $formatted_forms,
-				'defaultstyle' => aavoya_get_global_data()
+				'style' => aavoya_gpm($aavoya_wraqsci)
 
 			);
 
@@ -104,7 +119,7 @@ function update_form_toggle_infomation()
 			echo json_encode(array(true));
 			wp_die();
 		}
-		//incase scrip[t getting accessed outside of the site
+
 		echo json_encode(array(false));
 		wp_die();
 	}
@@ -127,24 +142,19 @@ function save_button_data()
 
 			$data = array(
 
+
+				//TODO: add global data in-case no data provided by use
+
+
 				'contact7form'		=> ($_POST['contact7form']) ? intval($_POST['contact7form']) : null,
-
 				'borderradiusvalue'	=> ($_POST['borderradius']) ? intval($_POST['borderradius']) : null,
-
 				'paddingxvalue'		=> ($_POST['paddingx']) ? intval($_POST['paddingx']) : null,
-
 				'paddingyvalue'		=> ($_POST['paddingy']) ? intval($_POST['paddingy']) : null,
-
 				'buttonbgcolor'		=> ($_POST['buttonbgcolor']) ? sanitize_hex_color($_POST['buttonbgcolor']) : null,
-
 				'buttontextcolor'	=> ($_POST['buttontextcolor']) ? sanitize_hex_color($_POST['buttontextcolor']) : null,
-
 				'buttontext'		=> ($_POST['buttontext']) ? sanitize_text_field($_POST['buttontext']) : null,
-
 				'buttontracking'	=> ($_POST['buttontracking']) ? intval($_POST['buttontracking']) : null,
-
 				'buttonfontsize'	=> ($_POST['buttonfontsize']) ? intval($_POST['buttonfontsize']) : null,
-
 				'buttoncssclass'	=> (($_POST['buttoncssclass'])) ? sanitize_html_class($_POST['buttoncssclass']) : null
 
 			);
@@ -252,21 +262,13 @@ function save_global_setting()
 
 
 		$globaldata['globalBgColor'] 		= ($_POST['globaldata']['globalBgColor']) ? sanitize_hex_color($_POST['globaldata']['globalBgColor']) : null;
-
 		$globaldata['globalTextColor']		= ($_POST['globaldata']['globalTextColor']) ? sanitize_hex_color($_POST['globaldata']['globalTextColor']) : null;
-
 		$globaldata['globalBorderRadius']	= ($_POST['globaldata']['globalBorderRadius']) ? intval($_POST['globaldata']['globalBorderRadius']) : null;
-
 		$globaldata['globalPaddingX']		= ($_POST['globaldata']['globalPaddingX']) ? intval($_POST['globaldata']['globalPaddingX']) : null;
-
 		$globaldata['globalPaddingY']		= ($_POST['globaldata']['globalPaddingY']) ? intval($_POST['globaldata']['globalPaddingY']) : null;
-
 		$globaldata['globalFontSize']		= ($_POST['globaldata']['globalFontSize']) ? intval($_POST['globaldata']['globalFontSize']) : null;
-
 		$globaldata['globalTracking']		= ($_POST['globaldata']['globalTracking']) ? intval($_POST['globaldata']['globalTracking']) : null;
-
 		$globaldata['globalText']			= ($_POST['globaldata']['globalText']) ? sanitize_text_field($_POST['globaldata']['globalText']) : null;
-
 		$globaldata['globalCssClass']		= ($_POST['globaldata']['globalCssClass']) ? sanitize_html_class($_POST['globaldata']['globalCssClass']) : null;
 
 
