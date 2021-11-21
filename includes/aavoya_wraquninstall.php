@@ -1,6 +1,6 @@
 <?php
 
-class aavoya_wraquninstall(){
+class aavoya_wraquninstall{
 
 	function __construct(){
 

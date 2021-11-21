@@ -177,7 +177,7 @@ function aavoya_gpm($id = null)
 {
 	if ($id == null) return false;
 
-	return return unserialize(get_post_meta($id, 'aavoya_wraq_meta_key', true));
+	return unserialize(get_post_meta($id, 'aavoya_wraq_meta_key', true));
 }
 
 

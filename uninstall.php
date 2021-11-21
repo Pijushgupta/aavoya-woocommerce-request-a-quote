@@ -4,6 +4,11 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
     die;
 }
 
+
+if (!class_exists('base')) {
+	require_once plugin_dir_path(__FILE__) . 'includes/base.php';
+}
+
 class aavoya_do_uninstall extends base{
 
 	public function __construct(){
