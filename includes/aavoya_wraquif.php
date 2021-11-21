@@ -97,42 +97,42 @@ class aavoya_wraquif extends base
 								<div class="w-full flex flex-row realtive z-30 rounded-sm flex-wrap mt-2 bg-white setting-row">
 									<div class="setting-col p-1 md:w-1/2">
 										<lebel for="global-corner">' . __('Corners', 'aavoya-woocommerce-request-a-quote') . '</lebel>
-										<input type="range" name="corners" id="global-corner" max="100" mix="0" value="' . $globalStyleArray['globalCorner'] . '">
+										<input type="range" name="corners" id="global-corner" max="100" mix="0" value="' . $globalStyleArray['globalborderradiusvalue'] . '">
 									</div>
 									<div class="setting-col p-1 md:w-1/2">
 										<label class="block" for="global-b-text">' . __('Text', 'aavoya-woocommerce-request-a-quote') . '</label>
-										<input class="w-full" type="text" id="global-b-text" name="buttontext" value="' . $globalStyleArray['globalText'] . '">
+										<input class="w-full" type="text" id="global-b-text" name="buttontext" value="' . $globalStyleArray['globalbuttontext'] . '">
 									</div>
 									<div class="setting-col p-1 md:w-1/2">
 										<label for="global-padding-x">' . __('Padding X', 'aavoya-woocommerce-request-a-quote') . '</label>
-										<input type="range" name="global-padding-x" id="global-padding-x" max="100" mix="0" value="' . $globalStyleArray['globalPaddingX'] . '">
+										<input type="range" name="global-padding-x" id="global-padding-x" max="100" mix="0" value="' . $globalStyleArray['globalpaddingxvalue'] . '">
 									</div>
 									<div class="setting-col p-1 md:w-1/2">
 										<label for="global-padding-y">' . __('Padding Y', 'aavoya-woocommerce-request-a-quote') . '</label>
-										<input type="range" name="global-padding-y" id="global-padding-y" max="100" mix="0" value="' . $globalStyleArray['globalPaddingY'] . '">
+										<input type="range" name="global-padding-y" id="global-padding-y" max="100" mix="0" value="' . $globalStyleArray['globalpaddingyvalue'] . '">
 									</div>
 									
 									<div class="setting-col p-1 md:w-1/2">
 										<label for="global-size">' . __('Size', 'aavoya-woocommerce-request-a-quote') . '</lebel>
-										<input type="range" name="global-size" id="global-size" max="100" mix="0" value="' . $globalStyleArray['globalSize'] . '"> 
+										<input type="range" name="global-size" id="global-size" max="100" mix="0" value="' . $globalStyleArray['globalbuttonfontsize'] . '"> 
 									</div>
 									<div class="setting-col p-1 md:w-1/2">
 										<label for="global-tracking">' . __('Tracking', 'aavoya-woocommerce-request-a-quote') . '</lebel>
-										<input type="range" name="global-tracking" id="global-tracking" max="100" mix="0" value="' . $globalStyleArray['globalTracking'] . '"> 
+										<input type="range" name="global-tracking" id="global-tracking" max="100" mix="0" value="' . $globalStyleArray['globalbuttontracking'] . '"> 
 									</div>
 									<div class="setting-col p-1 md:w-1/2 flex flex-wrap flex-row">
 										<div class="sub-setting-col  md:w-1/2">
 											<label class="block" forn="global-background-color">' . __('Background Color', 'aavoya-woocommerce-request-a-quote') . '</label>
-											<input type="color" name="global-background-color" id="global-background-color" value="' . $globalStyleArray['globalBgColor'] . '">
+											<input type="color" name="global-background-color" id="global-background-color" value="' . $globalStyleArray['globalbuttonbgcolor'] . '">
 										</div>
 										<div class="sub-setting-col md:w-1/2">
 											<label class="block" for="global-text-color">' . __('Text color', 'aavoya-woocommerce-request-a-quote') . '</label>
-											<input type="color" name="global-text-color" id="global-text-color" value="' . $globalStyleArray['globalTextColor'] . '">
+											<input type="color" name="global-text-color" id="global-text-color" value="' . $globalStyleArray['globalbuttontextcolor'] . '">
 										</div>
 									</div>
 									<div class="setting-col p-1 md:w-1/2">
 										<label class="block" for="global-css-class">' . __('Css class', 'aavoya-woocommerce-request-a-quote') . '</label>
-										<input class="w-full" type="text" name="global-css-class" id="global-css-class" value="' . $globalStyleArray['globalCssClass'] . '">
+										<input class="w-full" type="text" name="global-css-class" id="global-css-class" value="' . $globalStyleArray['globalbuttoncssclass'] . '">
 									</div>
 								</div>
 								<div class="w-full mt-2 border-t border-gray-100">
