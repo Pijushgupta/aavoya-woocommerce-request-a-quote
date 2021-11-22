@@ -20,14 +20,14 @@
                 //console.log(response);
 				forms_select_obj = response.forms;
 				
-				console.log(response.defaultstyle);
+				console.log(response.style);
                 var forms_select_options = "";
 
                 for (const [key, value] of Object.entries(forms_select_obj)) {
                     forms_select_options +=
                         '<option value="' + key + '">' + key + " - " + value + "</option>";
                 }
-				var inlineCssStyle = 'border-radius:' + response.defaultstyle.globalCorner + 'px; padding:' + response.defaultstyle.globalPaddingY + 'px ' + response.defaultstyle.globalPaddingX + 'px; background-color:' + response.defaultstyle.globalBgColor + '; color:' + response.defaultstyle.globalTextColor + '; letter-spacing:' + response.defaultstyle.globalTracking + 'px; text-size:' + response.defaultstyle.globalSize + 'px;';
+				var inlineCssStyle = 'border-radius:' + response.style.borderradiusvalue + 'px; padding:' + response.style.paddingyvalue + 'px ' + response.style.paddingxvalue + 'px; background-color:' + response.style.buttonbgcolor + '; color:' + response.style.buttontextcolor + '; letter-spacing:' + response.style.buttontracking + 'px; text-size:' + response.style.buttonfontsize + 'px;';
                 var row =
                     '<div class="row  w-full flex  relative z-50 rounded-sm shadow mt-2 items-center bg-white row'+response.id+'" >' +
 					'<div class="table-def text-center shortcode"><input type="text" name="sshortcode" class="bg-gray-200 rounded px-6 py-2 toclipboard" value=\''+ response.short_code +'\'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-2 text-gray-400 cursor-pointer copier" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg><div class="tool-tip hidden"></div></div>' +
@@ -39,32 +39,32 @@
                     '<div class="drawer  shadow rounded-sm p-2 -mt-1 pt-4 hidden transform duration-100 row'+response.id+'" id="' + response.id + '">'+
                     '<div class="w-full flex">'+
                     '<div class="w-full py-4">'+
-                    '<button class="block  border buttonborderradius '+response.defaultstyle.globalCssClass+'" id="button' + response.id + '" style="'+inlineCssStyle+'" >'+response.defaultstyle.globalText+'</button>' +
+                    '<button class="block  border buttonborderradius '+response.style.buttoncssclass+'" id="button' + response.id + '" style="'+inlineCssStyle+'" >'+response.style.buttontext+'</button>' +
                     '</div></div>'+
                     '<div class="w-full flex bg-gray-100 p-2 rounded">' +
                     '<div class="w-1/2 px-2 text-xs tracking-wide font-medium">' +
                     '<label class="" for="borderradius' + response.id +  '"> Corners</label>' +
-                    '<input type="range" min="0" max="100" value="'+response.defaultstyle.globalCorner+'" class="slider block w-full my-2 borderradius" id="borderradius' + response.id + '">' +
+                    '<input type="range" min="0" max="100" value="'+response.style.borderradiusvalue+'" class="slider block w-full my-2 borderradius" id="borderradius' + response.id + '">' +
                     '<label class="" for="paddingx' +  response.id + '"> Padding X</label>' +
-                    '<input name="paddingx" type="range" min="0" max="75" value="'+response.defaultstyle.globalPaddingX+'" class="slider block w-full my-2 paddingx" id="paddingx' + response.id + '">' +
+                    '<input name="paddingx" type="range" min="0" max="75" value="'+response.style.paddingxvalue+'" class="slider block w-full my-2 paddingx" id="paddingx' + response.id + '">' +
                     '<label class="" for="paddingy' + response.id + '"> Padding Y</label>' +
-                    '<input name="paddingy" type="range" min="0" max="75" value="'+response.defaultstyle.globalPaddingY+'" class="slider block w-full my-2 paddingy" id="paddingy' + response.id + '">' +
+                    '<input name="paddingy" type="range" min="0" max="75" value="'+response.style.paddingyvalue+'" class="slider block w-full my-2 paddingy" id="paddingy' + response.id + '">' +
                     '<div class="flex"><div class="w-1/2">'+
                     '<lable class="block mb-2" for="color-' + response.id + '">Background Colour</lable>' +
-                    '<input class="bgcolor" id="color-' + response.id + '" name="color-' + response.id + '" value="'+response.defaultstyle.globalBgColor+'" type="color">' +
+                    '<input class="bgcolor" id="color-' + response.id + '" name="color-' + response.id + '" value="'+response.style.buttonbgcolor+'" type="color">' +
                     '</div><div class="w-1/2">'+
                     '<lable class="block mb-2" for="tcolor-' + response.id + '">Text Colour</lable>' +
-                    '<input  class="textcolor" id="tcolor-' + response.id + '" name="tcolor-' + response.id + '" value="'+response.defaultstyle.globalTextColor+'" type="color">' +
+                    '<input  class="textcolor" id="tcolor-' + response.id + '" name="tcolor-' + response.id + '" value="'+response.style.buttontextcolor+'" type="color">' +
                     "</div></div></div>" +
                     '<div class="w-1/2 px-2 text-xs tracking-wide font-medium">'+
                     '<lable class="block mb-2" for="bottontext' + response.id + '">Text</lable>' +
-                    '<input name="buttontext" class="border p-2 bottontext rounded w-full " value="'+response.defaultstyle.globalText+'" id="bottontext' + response.id + '">' +
+                    '<input name="buttontext" class="border p-2 bottontext rounded w-full " value="'+response.style.buttontext+'" id="bottontext' + response.id + '">' +
                     '<lable class="block my-2" for="buttontracking' + response.id + '">Tracking</lable>' +
-                    '<input name="buttontracking" min="0" max="40" value="'+response.defaultstyle.globalTracking+'" class="slider block w-full my-2 buttontracking" type="range" value="" id="buttontracking' + response.id + '">' +
+                    '<input name="buttontracking" min="0" max="40" value="'+response.style.buttontracking+'" class="slider block w-full my-2 buttontracking" type="range" value="" id="buttontracking' + response.id + '">' +
                     '<lable class="block my-2" for="buttonfontsize' + response.id + '">Size</lable>' +
-                    '<input name="buttonfontsize" min="10" max="65"  class="slider block w-full my-2 buttonfontsize" type="range" value="'+response.defaultstyle.globalSize+'" id="buttonfontsize' + response.id + '">' +
+                    '<input name="buttonfontsize" min="10" max="65"  class="slider block w-full my-2 buttonfontsize" type="range" value="'+response.style.buttonfontsize+'" id="buttonfontsize' + response.id + '">' +
                     '<label class="mb-2" for="cssclass' + response.id + '">Css Class (Optional)</label>'+
-                    '<input type="text" name="cssclass" class="w-full cssclass" id="cssclass' + response.id + '" value="'+response.defaultstyle.globalCssClass+'">'+
+                    '<input type="text" name="cssclass" class="w-full cssclass" id="cssclass' + response.id + '" value="'+response.style.buttoncssclass+'">'+
                     "</div></div>" +
                     '<div class="w-full text-xs tracking-wide front-medium flex justify-end">' +
                     '<div class="mr-2"><button class="rounded flex ml-auto mr-0 px-8 py-2 mt-2 bg-blue-900 text-white text-xs tracking-wide font-medium delete" id="delete'+ response.id +'">Delete</button></div>' +
