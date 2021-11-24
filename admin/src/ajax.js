@@ -1,5 +1,7 @@
 (function($){
-    //This to add new row for shortcode for wordpress setting area
+    /**
+	 * This to add new row for shortcode for wordpress setting area
+	 */
     jQuery(".wpadder").on("click", function () {
 
         jQuery.ajax({
@@ -17,10 +19,10 @@
 
             success: function (response) {
                 response = JSON.parse(response);
-                //console.log(response);
+                //console.log(response.style);
 				forms_select_obj = response.forms;
 				
-				console.log(response.style);
+				console.log(response);
                 var forms_select_options = "";
 
                 for (const [key, value] of Object.entries(forms_select_obj)) {
