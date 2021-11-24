@@ -33,7 +33,7 @@ function get_new_button_data()
 			/**
 			 * adding global style to the newly created button via the below function
 			 */
-			aavoya_apply_global_style(aavoya_wraqsci);
+			aavoya_apply_global_style($aavoya_wraqsci);
 
 
 			$data = array(
