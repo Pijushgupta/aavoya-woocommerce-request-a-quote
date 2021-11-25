@@ -108,7 +108,7 @@ function aavoya_wraqgoc7f(){
 		break;
 	}
 
-	return $firstKey;
+	return intval($firstKey);
 }
 
 
@@ -169,6 +169,8 @@ function aavoya_wraqgap()
 	 */
 	$formatted_forms = aavoya_wraqgc7fl();
 
+
+
 	/**
 	 * below array of arguments is used to get all shortcodes 
 	 * from custom post type of "aavoya_wraq"
@@ -180,15 +182,21 @@ function aavoya_wraqgap()
 
 	);
 
+
+
 	/**
 	 * getting all the shortcodes
 	 */
 	$shortcodes = get_posts($argument);
 
+
+
 	/**
 	 * This to hold shortcode and form data for frontend rows
 	 */
 	$container = array();
+
+
 
 	/**
 	 * preparing the row bsaed on total number of shortcodes 
@@ -201,6 +209,8 @@ function aavoya_wraqgap()
 		$container[$key]['postmeta'] = aavoya_gpm($shortcode->ID);
 	}
 
+
+	
 	/**
 	 * returning the data to ajax handler
 	 */
