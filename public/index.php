@@ -17,10 +17,14 @@ if (class_exists("base")) {
 			 */
 			add_action('wp_enqueue_scripts', array($this, 'addcssjsfrontend'));
 
+
+
 			/**
 			 * adding shortcode for to call button and form for frontend 
 			 */
 			add_shortcode('awraqsci', array($this, 'awraqfi'));
+
+
 
 			/**
 			 * hooking woocommerce initialization of button creation process  
@@ -84,7 +88,10 @@ if (class_exists("base")) {
 				$cssClass = $unserializeButtonMeta['buttoncssclass'];
 			}
 
-			//id of the contact form 7  
+
+			/**
+			 * id of the contact form 7
+			 */
 			$contact7form = $unserializeButtonMeta['contact7form'];
 
 			//inline css to added to the button 
@@ -101,7 +108,7 @@ if (class_exists("base")) {
 		 */
 		public function awraqwi()
 		{
-			if (is_product()) {
+			if (aavoyaWooCom == TRUE && is_product()) {
 
 				$data = $this->get_product_button_data();
 

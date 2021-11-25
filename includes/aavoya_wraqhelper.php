@@ -41,6 +41,8 @@ function aavoya_apply_global_style($button_id = null)
 	 */
 	$global_style = aavoya_get_global_data();
 
+
+
 	/**
 	 * sanitizing/escaping again before handling 
 	 * Its kind of stupid to add this validation here where we are getting data from database and adding it back to database
@@ -48,7 +50,10 @@ function aavoya_apply_global_style($button_id = null)
 	 * 
 	 * It may create performance issues 
 	 */
+
+
 	$button_meta = array(
+		'contact7form'      => intval(aavoya_wraqgoc7f()),
 		'buttonbgcolor'		=> ($global_style['globalbuttonbgcolor']) ? sanitize_hex_color($global_style['globalbuttonbgcolor']) : null,
 		'buttontextcolor'	=> ($global_style['globalbuttontextcolor']) ? sanitize_hex_color($global_style['globalbuttontextcolor']) : null,
 		'borderradiusvalue'	=> ($global_style['globalborderradiusvalue']) ? intval($global_style['globalborderradiusvalue']) : null,
@@ -70,6 +75,41 @@ function aavoya_apply_global_style($button_id = null)
 	return add_post_meta($button_id, 'aavoya_wraq_meta_key', serialize($button_meta));
 }
 
+
+
+/**
+ * Get oldest contact 7 form id
+ * @param null
+ * @return int $firstKey
+ */
+function aavoya_wraqgoc7f(){
+
+	/**
+	 * Getting all contact 7 forms
+	 */
+	$contact7formlist = aavoya_wraqgc7fl();
+
+	/**
+	 * Sorting array elements by its key. Key with lowest value(not keys value, treating the key as value) will get listed first.
+	 * Objective: To get the oldest contact 7 form id.
+	 */
+	ksort($contact7formlist, SORT_NUMERIC);
+
+	/**
+	 * Now from the above array picking the very first key.
+	 * we are using normal foreach instead of array_key_first() just to keep backward compatibility.
+	 * Since array_key_first() introduced in Php 7.3.0
+	 */
+
+	$firstKey;
+
+	foreach($contact7formlist as $key => $contact7form){
+		$firstKey = $key;
+		break;
+	}
+
+	return $firstKey;
+}
 
 
 
