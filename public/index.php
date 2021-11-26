@@ -15,21 +15,21 @@ if (class_exists("base")) {
 			/**
 			 * hooking js and css method 
 			 */
-			add_action('wp_enqueue_scripts', array($this, 'addcssjsfrontend'));
+			add_action('wp_enqueue_scripts', array($this, 'aavoya_addcssjsfrontend'));
 
 
 
 			/**
 			 * adding shortcode for to call button and form for frontend 
 			 */
-			add_shortcode('awraqsci', array($this, 'awraqfi'));
+			add_shortcode('awraqsci', array($this, 'aavoya_awraqfi'));
 
 
 
 			/**
 			 * hooking woocommerce initialization of button creation process  
 			 */
-			add_action('template_redirect', array($this, 'awraqwi'));
+			add_action('template_redirect', array($this, 'aavoya_awraqwi'));
 		}
 
 
@@ -39,7 +39,7 @@ if (class_exists("base")) {
 		 * This method to add frontend css and js 
 		 * @return void
 		 */
-		public function addcssjsfrontend()
+		public function aavoya_addcssjsfrontend()
 		{
 			wp_enqueue_style('tailwind', aavoyaWraqRelative . '/public/assets/dist/app.css', array(), false, 'all');
 			wp_enqueue_script('javascripfunction', aavoyaWraqRelative . '/public/assets/dist/app.js', array('jquery'), false, true);
@@ -52,7 +52,7 @@ if (class_exists("base")) {
 		 * @param  mixed $attr
 		 * @return mixed string/html
 		 */
-		public function awraqfi($attr = null)
+		public function aavoya_awraqfi($attr = null)
 		{
 			/**
 			 * Terminate the program if no post id provided with shortcode
@@ -85,7 +85,7 @@ if (class_exists("base")) {
 			/**
 			 * Getting post meta un-serialized
 			 */
-			$unserializeButtonMeta = $wraq->araqgpm($buttonId);
+			$unserializeButtonMeta = $wraq->aavoya_araqgpm($buttonId);
 
 
 
@@ -104,6 +104,8 @@ if (class_exists("base")) {
 				$buttonText = $unserializeButtonMeta['buttontext'];
 
 			}
+
+
 			if ($unserializeButtonMeta['buttoncssclass']) {
 
 				$cssClass = $unserializeButtonMeta['buttoncssclass'];
@@ -117,22 +119,22 @@ if (class_exists("base")) {
 			$contact7form = $unserializeButtonMeta['contact7form'];
 
 			//inline css to added to the button 
-			$inlineCss = $wraq->araqcatc($unserializeButtonMeta);
+			$inlineCss = $wraq->aavoya_araqcatc($unserializeButtonMeta);
 
 
-			return $wraq->araqch($inlineCss, $cssClass, $randomValueForJs, $buttonText, $contact7form);
+			return $wraq->aavoya_araqch($inlineCss, $cssClass, $randomValueForJs, $buttonText, $contact7form);
 		}
 
 		/**
-		 * awraqwi
-		 *
+		 * aavoya_awraqwi
+		 * This to initiate button short code on Product IF a product having button id and button status active
 		 * @return void
 		 */
-		public function awraqwi()
+		public function aavoya_awraqwi()
 		{
 			if (aavoyaWooCom == TRUE && is_product()) {
 
-				$data = $this->get_product_button_data();
+				$data = $this->aavoya_wraqgpbd();
 
 
 				if ($data['buttonid'] && $data['buttonstatus'] == true && get_option('wraqwo') == TRUE && get_option('wraqwp') == TRUE) {
@@ -142,7 +144,7 @@ if (class_exists("base")) {
 
 					add_action('woocommerce_product_meta_start', function () {
 
-						echo do_shortcode('[awraqsci id="' . $this->get_product_button_data()['buttonid'] . '"]');
+						echo do_shortcode('[awraqsci id="' . $this->aavoya_wraqgpbd()['buttonid'] . '"]');
 
 					}, 30);
 				}
@@ -151,11 +153,11 @@ if (class_exists("base")) {
 
 
 		/**
-		 * get_product_button_data
+		 * aavoya_wraqgpbd
 		 * provide post meta of Products of button information 
 		 * @return array
 		 */
-		function get_product_button_data()
+		function aavoya_wraqgpbd()
 		{
 			if (aavoyaWooCom == TRUE && is_product()) {
 
@@ -171,6 +173,7 @@ if (class_exists("base")) {
 				return $data;
 			}
 		}
+
 	} /*class ends here*/
 
 	/**
