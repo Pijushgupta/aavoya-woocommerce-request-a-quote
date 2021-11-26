@@ -22,11 +22,28 @@ class aavoya_wraqf
 			return false;
 		}
 
-		$args = array('post_type' => 'aavoya_wraq', 'p' => $post_id);
+		$args = array('post_type' => 'aavoya_wraq', 'p' => intval($post_id));
 		$button = get_posts($args);
 
 		if (!empty($button)) {
-			return unserialize(get_post_meta($post_id, 'aavoya_wraq_meta_key', true));
+
+			$aavoya_button_meta = unserialize(get_post_meta($post_id, 'aavoya_wraq_meta_key', true));
+
+			/**
+			 * Sanitizing before sending button meta back
+			 */
+			$aavoya_button_meta['contact7form'] = intval($aavoya_button_meta['contact7form']);
+			$aavoya_button_meta['borderradiusvalue'] = intval($aavoya_button_meta['borderradiusvalue']);
+			$aavoya_button_meta['paddingxvalue'] = intval($aavoya_button_meta['paddingxvalue']);
+			$aavoya_button_meta['paddingyvalue'] = intval($aavoya_button_meta['paddingyvalue']);
+			$aavoya_button_meta['buttonbgcolor'] = sanitize_hex_color($aavoya_button_meta['buttonbgcolor']);
+			$aavoya_button_meta['buttontextcolor'] = sanitize_hex_color($aavoya_button_meta['buttontextcolor']);
+			$aavoya_button_meta['buttontext'] = sanitize_text_field($aavoya_button_meta['buttontext']);
+			$aavoya_button_meta['buttontracking'] = intval($aavoya_button_meta['buttontracking']);
+			$aavoya_button_meta['buttonfontsize'] = intval($aavoya_button_meta['buttonfontsize']);
+			$aavoya_button_meta['buttoncssclass'] = sanitize_html_class($aavoya_button_meta['buttoncssclass']);
+
+			return $aavoya_button_meta;
 		}
 	}
 
@@ -50,29 +67,29 @@ class aavoya_wraqf
 				switch ($property) {
 
 					case 'borderradiusvalue':
-						$cssAsString .= 'border-radius:' . $value . 'px;';
+						$cssAsString .= 'border-radius:' . intval($value) . 'px;';
 						break;
 					case 'paddingxvalue':
-						$cssAsString .= 'padding-right:' . $value . 'px;';
-						$cssAsString .= 'padding-left:' . $value . 'px;';
+						$cssAsString .= 'padding-right:' . intval($value) . 'px;';
+						$cssAsString .= 'padding-left:' . intval($value) . 'px;';
 						break;
 					case 'paddingyvalue':
-						$cssAsString .= 'padding-top:' . $value . 'px;';
-						$cssAsString .= 'padding-bottom:' . $value . 'px;';
+						$cssAsString .= 'padding-top:' . intval($value) . 'px;';
+						$cssAsString .= 'padding-bottom:' . intval($value) . 'px;';
 						break;
 					case 'buttonbgcolor':
-						$cssAsString .= 'background-color:' . $value . ';';
+						$cssAsString .= 'background-color:' . sanitize_hex_color($value) . ';';
 						break;
 					case 'buttontextcolor':
-						$cssAsString .= 'color:' . $value . ';';
+						$cssAsString .= 'color:' . sanitize_hex_color($value) . ';';
 						break;
 					case 'buttontext':
 						break;
 					case 'buttontracking':
-						$cssAsString .= 'letter-spacing:' . $value . 'px;';
+						$cssAsString .= 'letter-spacing:' . intval($value) . 'px;';
 						break;
 					case 'buttonfontsize':
-						$cssAsString .= 'font-size:' . $value . 'px;';
+						$cssAsString .= 'font-size:' . intval($value) . 'px;';
 						break;
 					case 'buttoncssclass':
 						break;

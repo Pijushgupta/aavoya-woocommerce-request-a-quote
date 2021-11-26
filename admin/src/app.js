@@ -181,7 +181,7 @@
 
 
 	/**
-	 * This reposible for collecting the data after clicking the save button
+	 * This responsible for collecting the data after clicking the save button
 	 * and then it pass the data to "sendSettingsData" method for processing
 	 */
 	jQuery(".wp-appender").on("click", ".save", function () {
@@ -216,7 +216,6 @@
 
 	/**
 	 * This is to save button data , via Ajax
-	 * TODO: add selected form id, to save
 	 * @param nodeId
 	 * @param contact7form
 	 * @param borderRadiusValue

@@ -50,42 +50,64 @@ if (class_exists("base")) {
 		 * awraqfi
 		 * Creates the button and form
 		 * @param  mixed $attr
-		 * @return void
+		 * @return mixed string/html
 		 */
 		public function awraqfi($attr = null)
 		{
-			//Terminate the program if no post id provided with shortcode
-			if ($attr == null) {
-				return "No id Provided";
-			}
+			/**
+			 * Terminate the program if no post id provided with shortcode
+			 */
+			if ($attr == null) { return "No id Provided";}
 
+
+
+			/**
+			 * Creating object of the class "aavoya_wraqf" as $wraq
+			 */
 			$wraq = $this->load('aavoya_wraqf', __DIR__);
 
-			//Enable and Disable switch verification
-			if (get_option('wraqwp') != true) {
-				return "Enable if From Plugins Interface";
+
+
+			/**
+			 * Enable and Disable switch verification
+			 * Checking if the buttons are enabled or not. This switch located at top-right of button tab
+			 */
+			if (rest_sanitize_boolean(get_option('wraqwp')) != true) {
+				return "Enable it From Plugins Interface";
 			}
 
-			$buttonId = $attr['id'];
-			$buttonText = 'Button';
-			$cssClass = '';
-			$randomValueForJs = rand();
 
-			//Getting post meta unserialized 
+
+			$buttonId = intval($attr['id']); $buttonText = 'Button'; $cssClass = ''; $randomValueForJs = rand();
+
+
+
+			/**
+			 * Getting post meta un-serialized
+			 */
 			$unserializeButtonMeta = $wraq->araqgpm($buttonId);
 
-			//Terminate the Program if no post meta found 
+
+
+			/*
+			 * Terminate the Program if no post meta found
+			 */
 			if ($unserializeButtonMeta == false) {
 				return;
 			}
 
-			$wraq = $this->load('aavoya_wraqf', __DIR__);
+
+
 
 			if ($unserializeButtonMeta['buttontext']) {
+
 				$buttonText = $unserializeButtonMeta['buttontext'];
+
 			}
 			if ($unserializeButtonMeta['buttoncssclass']) {
+
 				$cssClass = $unserializeButtonMeta['buttoncssclass'];
+
 			}
 
 
@@ -121,6 +143,7 @@ if (class_exists("base")) {
 					add_action('woocommerce_product_meta_start', function () {
 
 						echo do_shortcode('[awraqsci id="' . $this->get_product_button_data()['buttonid'] . '"]');
+
 					}, 30);
 				}
 			}
@@ -130,12 +153,22 @@ if (class_exists("base")) {
 		/**
 		 * get_product_button_data
 		 * provide post meta of Products of button information 
-		 * @return void
+		 * @return array
 		 */
 		function get_product_button_data()
 		{
-			if (is_product()) {
-				return unserialize(get_post_meta(get_the_ID(), 'aavoya_wraqp_meta_key', true));
+			if (aavoyaWooCom == TRUE && is_product()) {
+
+
+				$data = unserialize(get_post_meta(get_the_ID(), 'aavoya_wraqp_meta_key', true));
+
+				/**
+				 * sanitization
+				 * */
+				$data['buttonid'] =  intval($data['buttonid']);
+				$data['buttonstatus'] =  rest_sanitize_boolean($data['buttonstatus']);
+
+				return $data;
 			}
 		}
 	} /*class ends here*/
