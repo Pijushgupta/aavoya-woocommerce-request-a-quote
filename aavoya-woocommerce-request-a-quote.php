@@ -131,10 +131,12 @@ function aavoyaOnPluginsLoad()
 
 		deactivate_plugins('aavoya-woocommerce-request-a-quote/aavoya-woocommerce-request-a-quote.php');
 		add_action('admin_notices', 'aavoya_admin_notice');
+
 	} else {
 
 		require_once aavoyaWraqAbsolute . 'includes/index.php';
 		require_once aavoyaWraqAbsolute . 'public/index.php';
+
 	}
 }
 add_action('plugins_loaded', 'aavoyaOnPluginsLoad');
