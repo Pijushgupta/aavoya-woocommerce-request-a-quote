@@ -16,19 +16,15 @@ if (get_option('aavoya_wraq_global_settings', false) == false) {
  */
 function createDefaultData()
 {
-	//TODO: fix the nemes accondingly local vars
-	//
-
-
-	$globaldata['globalbuttonbgcolor']			= '#1e3a8a';
-	$globaldata['globalbuttontextcolor']		= '#ffffff';
-	$globaldata['globalborderradiusvalue']		= 8;
-	$globaldata['globalpaddingxvalue']			= 30;
-	$globaldata['globalpaddingyvalue']			= 10;
-	$globaldata['globalbuttonfontsize']			= 21;
-	$globaldata['globalbuttontracking']			= 6;
-	$globaldata['globalbuttontext']				= 'Button';
-	$globaldata['globalbuttoncssclass']			= 'aavoya-wraq-btn';
+	$globaldata['globalbuttonbgcolor']			= sanitize_hex_color('#1e3a8a');
+	$globaldata['globalbuttontextcolor']		= sanitize_hex_color('#ffffff');
+	$globaldata['globalborderradiusvalue']		= intval(8);
+	$globaldata['globalpaddingxvalue']			= intval(30);
+	$globaldata['globalpaddingyvalue']			= intval(10);
+	$globaldata['globalbuttonfontsize']			= intval(21);
+	$globaldata['globalbuttontracking']			= intval(6);
+	$globaldata['globalbuttontext']				= sanitize_text_field('Button');
+	$globaldata['globalbuttoncssclass']			= sanitize_html_class('aavoya-wraq-btn');
 
 	return serialize($globaldata);
 }
