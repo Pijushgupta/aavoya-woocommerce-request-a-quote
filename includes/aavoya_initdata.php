@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class aavoya_initdata extend base {
+class aavoya_initdata extends base {
 
 	function __construct(){
 		/**
