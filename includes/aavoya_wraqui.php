@@ -210,7 +210,7 @@ class aavoya_wraqui extends base
                                 <div class="wp-appender">
                                 </div>
 
-                                <button class="wpadder rounded flex ml-auto mr-0 px-8 py-2 mt-2 bg-blue-900 text-white text-xs tracking-wide font-medium ">Add New</button>
+                                <button class="wpadder rounded flex ml-auto mr-0 px-8 py-2 mt-2 bg-blue-900 text-white text-xs tracking-wide font-medium "><?php _e('Add New','aavoya-woocommerce-request-a-quote');?></button>
                             </div>
 
                         </div>
@@ -230,7 +230,7 @@ class aavoya_wraqui extends base
                     <div class="woo-form-area">
                         <div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
                             <label class="text-xs tracking-wide font-medium" for="enable-woo-id"><span><?php  _e('Enable for Woocommerce.', 'aavoya-woocommerce-request-a-quote'); ?></label>
-                            <input class="enable-woo-class" id="enable-woo-id" name="enable-woo" type="checkbox" <?php echo $wraqwochecked ?>>
+                            <input class="enable-woo-class" id="enable-woo-id" name="enable-woo" type="checkbox" <?php echo $wraqwochecked; ?>>
                         </div>
                         <div class="py-2 px-2 woo-form-map-table">
                             <div id="woo-default-setting-area" class="' . $hidden . ' relative ">
