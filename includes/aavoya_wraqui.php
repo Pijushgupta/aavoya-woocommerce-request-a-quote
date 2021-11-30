@@ -9,60 +9,60 @@ class aavoya_wraqui extends base
 
 
 
-	/**
-	 * __construct
-	 * Simple Constructor to init methods on object creation
-     * Anything within this method will invoke automatically on object creation.
-     * Here you can find more information - w3:https://www.w3schools.com/php/php_oop_constructor.asp or php.net : https://www.php.net/manual/en/language.oop5.decon.php
-	 * @return void
-	 */
-	public function __construct(){
+    /**
+    * __construct
+    * Simple Constructor to init methods on object creation
+    * Anything within this method will invoke automatically on object creation.
+    * Here you can find more information - w3:https://www.w3schools.com/php/php_oop_constructor.asp or php.net : https://www.php.net/manual/en/language.oop5.decon.php
+    * @return void
+    */
+    public function __construct(){
 
-		/**
-		 * enqueuing style and js on admin by method 'aavoya_woocommerce_request_a_quote_add_css_js' on action 'admin_enqueue_scripts'
+        /**
+         * enqueuing style and js on admin by method 'aavoya_woocommerce_request_a_quote_add_css_js' on action 'admin_enqueue_scripts'
          * since we are using object oriented approach , that is why we are using array instead of simple callback function.
-		 * In that array we are referring the pseudo-variable $this and then the method name. more about $this : https://https://www.php.net/manual/en/language.oop5.basic.php
-		 */
-		add_action('admin_enqueue_scripts', array($this, 'aavoya_woocommerce_request_a_quote_add_css_js'));
+         * In that array we are referring the pseudo-variable $this and then the method name. more about $this : https://https://www.php.net/manual/en/language.oop5.basic.php
+         */
+        add_action('admin_enqueue_scripts', array($this, 'aavoya_woocommerce_request_a_quote_add_css_js'));
 
-		/**
+        /**
          * Adding admin menu page(s)
          * since we are using object oriented approach , that is why we are using array instead of simple callback function.
-		 * In that array we are referring the pseudo-variable $this and then the method name. more about $this : https://https://www.php.net/manual/en/language.oop5.basic.php
+         * In that array we are referring the pseudo-variable $this and then the method name. more about $this : https://https://www.php.net/manual/en/language.oop5.basic.php
          */
-		add_action('admin_menu', array($this, 'aavoya_woocommerce_request_a_quote_admin_menu'));
+        add_action('admin_menu', array($this, 'aavoya_woocommerce_request_a_quote_admin_menu'));
 
-	}
+    }
 
 
 
-	/**
-	 * aavoya_woocommerce_request_a_quote_add_css_js
-	 * Adding Assets like javascript and css
-	 * @param  string $hook
-	 * @return void
-	 */
+    /**
+    * aavoya_woocommerce_request_a_quote_add_css_js
+    * Adding Assets like javascript and css
+    * @param  string $hook
+    * @return void
+    */
 	public function aavoya_woocommerce_request_a_quote_add_css_js($hook)
 	{
-		/**
-		 * The '$hook' variable contain page slug of the plugin.
+        /**
+         * The '$hook' variable contain page slug of the plugin.
          * I'm checking if the page slug matches then only include the javascript and css file else EXIT the method.
          * The reason to this to avoid any conflict with wordpress's css and js and reduce unnecessary inclusion of the plugin
-		 */
+         */
 		if ($hook != 'toplevel_page_aavoya_woocommerce_request_a_quote_setting') {return;}
 
-		/**
-		 * Css file to style admin page of the plugin
+        /**
+         * Css file to style admin page of the plugin
          * i'm using tailwindcss with NPM , Purge css and laravel-mix(webpack) to generate the css
-		 */
+         */
 		wp_enqueue_style('wordpress-form-css', aavoyaWraqRelative . '/admin/dist/app.css', '', '1', 'all');
 
-		/**
-		 * Using jQuery since jQuery is already included in the wordpress core,
+        /**
+         * Using jQuery since jQuery is already included in the wordpress core,
          * in the next(if it gets approved) version will use React to do the development works little easy tightly integrated
          * i'm using laravel-mix to combine multiple js file and create a single(app.js) js file.
          * here you can find more information about the method 'wp_enqueue_scripthttps' : https://developer.wordpress.org/reference/functions/wp_enqueue_script/
-		 */
+         */
 		wp_enqueue_script('wordpress-form-js', aavoyaWraqRelative . '/admin/dist/app.js', array('jquery'), '1', true);
 	}
 
