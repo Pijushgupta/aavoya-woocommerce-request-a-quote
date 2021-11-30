@@ -187,17 +187,125 @@ class aavoya_wraqui extends base
 			</div>
 			<div class=" w-4/5 aavoya-wraq-tab-body">
 
-				<?php $wordpress_hraq_form_object = $this->load('aavoya_wraquif'); ?>
+
 
 				<div id="aavoya-wraq-wordpress" class="tab-body-area border w-full  bg-white">
-					<?php _e($wordpress_hraq_form_object->form(),'aavoya-woocommerce-request-a-quote'); ?>
+					<?php
+					if (get_option('wraqwp') == true) {
+						$wraqwp_checked = 'checked';
+						$hidden = '';
+					} else {
+						$wraqwp_checked = '';
+						$hidden = 'hidden';
+					}
+                    ?>
+                    <div class="wordpress-form-area">
+                        <div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
+                            <label class="text-xs tracking-wide font-medium" for="enable-wordpress-id"><span><?php  _e('Enable Buttons.', 'aavoya-woocommerce-request-a-quote') ?></label>
+                            <input class="enable-wordpress-class" id="enable-wordpress-id" name="enable-wordpress" type="checkbox" <?php  echo $wraqwp_checked ?> >
+                        </div>
+                        <div class="py-2 px-2 wp-form-map-table">
+                            <div id="wordpress-default-setting-area" class="' . $hidden . ' relative ">
+
+                                <div class="wp-appender">
+                                </div>
+
+                                <button class="wpadder rounded flex ml-auto mr-0 px-8 py-2 mt-2 bg-blue-900 text-white text-xs tracking-wide font-medium ">Add New</button>
+                            </div>
+
+                        </div>
+                    </div>
 				</div>
 
 				<div id="aavoya-wraq-woocommerce" class="hidden tab-body-area border w-full  bg-white">
-					<?php _e($wordpress_hraq_form_object->woo_form(),'aavoya-woocommerce-request-a-quote'); ?>
+					<?php
+                        if (get_option('wraqwo')) {
+                            $wraqwochecked = 'checked';
+                            $hidden = '';
+                        } else {
+                            $wraqwochecked = '';
+                            $hidden = 'hidden';
+                        }
+                    ?>
+                    <div class="woo-form-area">
+                        <div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
+                            <label class="text-xs tracking-wide font-medium" for="enable-woo-id"><span><?php  _e('Enable for Woocommerce.', 'aavoya-woocommerce-request-a-quote') ?></label>
+                            <input class="enable-woo-class" id="enable-woo-id" name="enable-woo" type="checkbox"' . $wraqwochecked . '>
+                        </div>
+                        <div class="py-2 px-2 woo-form-map-table">
+                            <div id="woo-default-setting-area" class="' . $hidden . ' relative ">
+                                <div class="woo-appender">
+                                    <?php if (aavoyaWooCom != true) {
+                                    _e('WooCommerce Not Installed','aavoya-woocommerce-request-a-quote');
+                                    }?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 				</div>
+
 				<div id="aavoya-setting" class="hidden tab-body-area border w-full  bg-white">
-					<?php _e($wordpress_hraq_form_object->awarq_setting(),'aavoya-woocommerce-request-a-quote'); ?>
+					<?php
+					$globalStyleArray = aavoya_get_global_data();
+                    ?>
+                    <div class="setting-area">
+
+                        <div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
+                            <label class="text-xs tracking-wide font-medium" for="enable-woo-id"><span><?php _e('Settings', 'aavoya-woocommerce-request-a-quote') ?></label>
+                        </div>
+
+                        <div class="py-2 px-2 woo-form-map-table">
+                            <div id="woo-default-setting-area" class="relative ">
+                                <div class="setting-appender">
+                                    <div class="w-full flex flex-row realtive z-30 rounded-sm flex-wrap mt-2 bg-white setting-row">
+                                        <div class="setting-col p-1 md:w-1/2">
+                                            <lebel for="global-corner"><?php _e('Corners', 'aavoya-woocommerce-request-a-quote'); ?></lebel>
+                                            <input type="range" name="corners" id="global-corner" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalborderradiusvalue'] ); ?>">
+                                        </div>
+                                        <div class="setting-col p-1 md:w-1/2">
+                                            <label class="block" for="global-b-text"><?php _e('Text', 'aavoya-woocommerce-request-a-quote'; ?></label>
+                                            <input class="w-full" type="text" id="global-b-text" name="buttontext" value="<?php echo sanitize_text_field($globalStyleArray['globalbuttontext']); ?>">
+                                        </div>
+                                        <div class="setting-col p-1 md:w-1/2">
+                                            <label for="global-padding-x"><?php _e('Padding X', 'aavoya-woocommerce-request-a-quote'); ?></label>
+                                            <input type="range" name="global-padding-x" id="global-padding-x" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalpaddingxvalue']); ?>">
+                                        </div>
+                                        <div class="setting-col p-1 md:w-1/2">
+                                            <label for="global-padding-y"><?php _e('Padding Y', 'aavoya-woocommerce-request-a-quote'); ?></label>
+                                            <input type="range" name="global-padding-y" id="global-padding-y" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalpaddingyvalue']; ?>">
+                                        </div>
+
+                                        <div class="setting-col p-1 md:w-1/2">
+                                            <label for="global-size"><?php _e('Size', 'aavoya-woocommerce-request-a-quote'); ?></lebel>
+                                            <input type="range" name="global-size" id="global-size" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalbuttonfontsize']); ?>">
+                                        </div>
+                                        <div class="setting-col p-1 md:w-1/2">
+                                            <label for="global-tracking"><?php _e('Tracking', 'aavoya-woocommerce-request-a-quote'); ?></lebel>
+                                            <input type="range" name="global-tracking" id="global-tracking" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalbuttontracking']); ?>">
+                                        </div>
+                                        <div class="setting-col p-1 md:w-1/2 flex flex-wrap flex-row">
+                                            <div class="sub-setting-col  md:w-1/2">
+                                                <label class="block" forn="global-background-color"><?php _e('Background Color', 'aavoya-woocommerce-request-a-quote'); ?></label>
+                                                <input type="color" name="global-background-color" id="global-background-color" value="<?php echo sanitize_hex_color($globalStyleArray['globalbuttonbgcolor']); ?>">
+                                            </div>
+                                            <div class="sub-setting-col md:w-1/2">
+                                                <label class="block" for="global-text-color"><?php _e('Text color', 'aavoya-woocommerce-request-a-quote'); ?></label>
+                                                <input type="color" name="global-text-color" id="global-text-color" value="<?php echo sanitize_hex_color($globalStyleArray['globalbuttontextcolor'];) ?>">
+                                            </div>
+                                        </div>
+                                        <div class="setting-col p-1 md:w-1/2">
+                                            <label class="block" for="global-css-class"><?php _e('Css class', 'aavoya-woocommerce-request-a-quote'); ?></label>
+                                            <input class="w-full" type="text" name="global-css-class" id="global-css-class" value="<?php echo sanitize_html_class($globalStyleArray['globalbuttoncssclass']); ?>">
+                                        </div>
+                                    </div>
+                                    <div class="w-full mt-2 border-t border-gray-100">
+                                        <button class="save-settings rounded flex ml-auto mr-0 px-8 py-2 mt-2 bg-blue-900 text-white text-xs tracking-wide font-medium"><?php _e('Save', 'aavoya-woocommerce-request-a-quote'); ?> </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 				</div>
 
 
