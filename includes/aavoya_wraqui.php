@@ -42,20 +42,20 @@ class aavoya_wraqui extends base
     * @param  string $hook
     * @return void
     */
-	public function aavoya_woocommerce_request_a_quote_add_css_js($hook)
-	{
+    public function aavoya_woocommerce_request_a_quote_add_css_js($hook)
+    {
         /**
          * The '$hook' variable contain page slug of the plugin.
          * I'm checking if the page slug matches then only include the javascript and css file else EXIT the method.
          * The reason to this to avoid any conflict with wordpress's css and js and reduce unnecessary inclusion of the plugin
          */
-		if ($hook != 'toplevel_page_aavoya_woocommerce_request_a_quote_setting') {return;}
+        if ($hook != 'toplevel_page_aavoya_woocommerce_request_a_quote_setting') {return;}
 
         /**
          * Css file to style admin page of the plugin
          * i'm using tailwindcss with NPM , Purge css and laravel-mix(webpack) to generate the css
          */
-		wp_enqueue_style('wordpress-form-css', aavoyaWraqRelative . '/admin/dist/app.css', '', '1', 'all');
+        wp_enqueue_style('wordpress-form-css', aavoyaWraqRelative . '/admin/dist/app.css', '', '1', 'all');
 
         /**
          * Using jQuery since jQuery is already included in the wordpress core,
@@ -63,53 +63,53 @@ class aavoya_wraqui extends base
          * i'm using laravel-mix to combine multiple js file and create a single(app.js) js file.
          * here you can find more information about the method 'wp_enqueue_scripthttps' : https://developer.wordpress.org/reference/functions/wp_enqueue_script/
          */
-		wp_enqueue_script('wordpress-form-js', aavoyaWraqRelative . '/admin/dist/app.js', array('jquery'), '1', true);
-	}
+        wp_enqueue_script('wordpress-form-js', aavoyaWraqRelative . '/admin/dist/app.js', array('jquery'), '1', true);
+    }
 
 
 
-	/**
-	 * aavoya_woocommerce_request_a_quote_admin_menu
-	 * Creating the admin menu
-	 */
-	public function aavoya_woocommerce_request_a_quote_admin_menu()
-	{
-		/**
-		 * Checking if the current user is having proper privilege(admin or not)
+    /**
+     * aavoya_woocommerce_request_a_quote_admin_menu
+     * Creating the admin menu
+     */
+    public function aavoya_woocommerce_request_a_quote_admin_menu()
+    {
+        /**
+         * Checking if the current user is having proper privilege(admin or not)
          * the wordpress method 'current_user_can' doing that for us
          * here you can find more information about the method : https://developer.wordpress.org/reference/functions/current_user_can/
-		 */
-		if (!current_user_can('manage_options')) {
-			wp_die(__('You do not have sufficient permissions to access this page.', 'aavoya-woocommerce-request-a-quote'));
-		}
+         */
+        if (!current_user_can('manage_options')) {
+            wp_die(__('You do not have sufficient permissions to access this page.', 'aavoya-woocommerce-request-a-quote'));
+        }
 
-		/**
-		 * This method actually adding admin menu page
+        /**
+         * This method actually adding admin menu page
          * add_menu_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '', string $icon_url = '', int $position = null )
          * The 5th argument - callback function - since we are using object oriented approach , that is why we are using array instead of simple callback function.
          * In that array we are referring the pseudo-variable $this and then the method name. more about $this : https://https://www.php.net/manual/en/language.oop5.basic.php
          * here you can find more information about the function: https://https://developer.wordpress.org/reference/functions/add_menu_page/
-		 */
-		add_menu_page(
-			__('Aavoya Request a Quote', 'aavoya-woocommerce-request-a-quote'),
-			__('Aavoya RAQ', 'aavoya-woocommerce-request-a-quote'),
-			'manage_options',
-			'aavoya_woocommerce_request_a_quote_setting',
-			array($this, 'aavoya_woocommerce_request_a_quote_show_default_page'),
-			'dashicons-clipboard',
-			20
-		);
-	}
+         */
+        add_menu_page(
+            __('Aavoya Request a Quote', 'aavoya-woocommerce-request-a-quote'),
+            __('Aavoya RAQ', 'aavoya-woocommerce-request-a-quote'),
+            'manage_options',
+            'aavoya_woocommerce_request_a_quote_setting',
+            array($this, 'aavoya_woocommerce_request_a_quote_show_default_page'),
+            'dashicons-clipboard',
+            20
+        );
+    }
 
 
 
 
-	/**
-	 * aavoya_woocommerce_request_a_quote_show_default_page
-	 * Adding items to the default backend page 
-	 * @return void
-	 */
-	public function aavoya_woocommerce_request_a_quote_show_default_page() { ?>
+    /**
+     * aavoya_woocommerce_request_a_quote_show_default_page
+     * Adding items to the default backend page
+     * @return void
+     */
+    public function aavoya_woocommerce_request_a_quote_show_default_page() { ?>
 
 		<input type="hidden" name="awraq_nonce" id="awraqnonce" value="<?php echo wp_create_nonce("awraq_nonce"); ?>">
 		<header class="header">
@@ -263,7 +263,7 @@ class aavoya_wraqui extends base
                                             <input type="range" name="corners" id="global-corner" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalborderradiusvalue'] ); ?>">
                                         </div>
                                         <div class="setting-col p-1 md:w-1/2">
-                                            <label class="block" for="global-b-text"><?php _e('Text', 'aavoya-woocommerce-request-a-quote'; ?></label>
+                                            <label class="block" for="global-b-text"><?php _e('Text', 'aavoya-woocommerce-request-a-quote'); ?></label>
                                             <input class="w-full" type="text" id="global-b-text" name="buttontext" value="<?php echo sanitize_text_field($globalStyleArray['globalbuttontext']); ?>">
                                         </div>
                                         <div class="setting-col p-1 md:w-1/2">
@@ -314,7 +314,7 @@ class aavoya_wraqui extends base
         <!-- main container ends here -->
 
 <?php
-	}
+    }
 }
 
 /**
