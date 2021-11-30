@@ -201,8 +201,8 @@ class aavoya_wraqui extends base
                     ?>
                     <div class="wordpress-form-area">
                         <div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
-                            <label class="text-xs tracking-wide font-medium" for="enable-wordpress-id"><span><?php  _e('Enable Buttons.', 'aavoya-woocommerce-request-a-quote') ?></label>
-                            <input class="enable-wordpress-class" id="enable-wordpress-id" name="enable-wordpress" type="checkbox" <?php  echo $wraqwp_checked ?> >
+                            <label class="text-xs tracking-wide font-medium" for="enable-wordpress-id"><span><?php  _e('Enable Buttons.', 'aavoya-woocommerce-request-a-quote'); ?></label>
+                            <input class="enable-wordpress-class" id="enable-wordpress-id" name="enable-wordpress" type="checkbox" <?php  echo $wraqwp_checked; ?> >
                         </div>
                         <div class="py-2 px-2 wp-form-map-table">
                             <div id="wordpress-default-setting-area" class="' . $hidden . ' relative ">
@@ -229,8 +229,8 @@ class aavoya_wraqui extends base
                     ?>
                     <div class="woo-form-area">
                         <div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
-                            <label class="text-xs tracking-wide font-medium" for="enable-woo-id"><span><?php  _e('Enable for Woocommerce.', 'aavoya-woocommerce-request-a-quote') ?></label>
-                            <input class="enable-woo-class" id="enable-woo-id" name="enable-woo" type="checkbox"' . $wraqwochecked . '>
+                            <label class="text-xs tracking-wide font-medium" for="enable-woo-id"><span><?php  _e('Enable for Woocommerce.', 'aavoya-woocommerce-request-a-quote'); ?></label>
+                            <input class="enable-woo-class" id="enable-woo-id" name="enable-woo" type="checkbox" <?php echo $wraqwochecked ?>>
                         </div>
                         <div class="py-2 px-2 woo-form-map-table">
                             <div id="woo-default-setting-area" class="' . $hidden . ' relative ">
@@ -251,7 +251,7 @@ class aavoya_wraqui extends base
                     <div class="setting-area">
 
                         <div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
-                            <label class="text-xs tracking-wide font-medium" for="enable-woo-id"><span><?php _e('Settings', 'aavoya-woocommerce-request-a-quote') ?></label>
+                            <label class="text-xs tracking-wide font-medium" for="enable-woo-id"><span><?php _e('Settings', 'aavoya-woocommerce-request-a-quote'); ?></label>
                         </div>
 
                         <div class="py-2 px-2 woo-form-map-table">
@@ -260,7 +260,7 @@ class aavoya_wraqui extends base
                                     <div class="w-full flex flex-row realtive z-30 rounded-sm flex-wrap mt-2 bg-white setting-row">
                                         <div class="setting-col p-1 md:w-1/2">
                                             <lebel for="global-corner"><?php _e('Corners', 'aavoya-woocommerce-request-a-quote'); ?></lebel>
-                                            <input type="range" name="corners" id="global-corner" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalborderradiusvalue'] ); ?>">
+                                            <input type="range" name="corners" id="global-corner" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalborderradiusvalue']); ?>">
                                         </div>
                                         <div class="setting-col p-1 md:w-1/2">
                                             <label class="block" for="global-b-text"><?php _e('Text', 'aavoya-woocommerce-request-a-quote'); ?></label>
@@ -272,7 +272,7 @@ class aavoya_wraqui extends base
                                         </div>
                                         <div class="setting-col p-1 md:w-1/2">
                                             <label for="global-padding-y"><?php _e('Padding Y', 'aavoya-woocommerce-request-a-quote'); ?></label>
-                                            <input type="range" name="global-padding-y" id="global-padding-y" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalpaddingyvalue']; ?>">
+                                            <input type="range" name="global-padding-y" id="global-padding-y" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalpaddingyvalue']); ?>">
                                         </div>
 
                                         <div class="setting-col p-1 md:w-1/2">
