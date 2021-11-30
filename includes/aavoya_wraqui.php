@@ -290,7 +290,7 @@ class aavoya_wraqui extends base
                                             </div>
                                             <div class="sub-setting-col md:w-1/2">
                                                 <label class="block" for="global-text-color"><?php _e('Text color', 'aavoya-woocommerce-request-a-quote'); ?></label>
-                                                <input type="color" name="global-text-color" id="global-text-color" value="<?php echo sanitize_hex_color($globalStyleArray['globalbuttontextcolor'];) ?>">
+                                                <input type="color" name="global-text-color" id="global-text-color" value="<?php echo sanitize_hex_color($globalStyleArray['globalbuttontextcolor']); ?>">
                                             </div>
                                         </div>
                                         <div class="setting-col p-1 md:w-1/2">
