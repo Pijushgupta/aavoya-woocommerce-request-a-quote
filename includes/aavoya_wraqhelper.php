@@ -37,7 +37,7 @@ function aavoya_apply_global_style($button_id = null)
 		return;
 	}
 	/**
-	 * getting default/global settings from database  
+	 * getting default/global settings from database
 	 */
 	$global_style = aavoya_get_global_data();
 
@@ -54,15 +54,15 @@ function aavoya_apply_global_style($button_id = null)
 
 	$button_meta = array(
 		'contact7form'      => intval(aavoya_wraqgoc7f()),
-		'buttonbgcolor'		=> ($global_style['globalbuttonbgcolor']) ? sanitize_hex_color($global_style['globalbuttonbgcolor']) : null,
-		'buttontextcolor'	=> ($global_style['globalbuttontextcolor']) ? sanitize_hex_color($global_style['globalbuttontextcolor']) : null,
-		'borderradiusvalue'	=> ($global_style['globalborderradiusvalue']) ? intval($global_style['globalborderradiusvalue']) : null,
-		'paddingxvalue'		=> ($global_style['globalpaddingxvalue']) ? intval($global_style['globalpaddingxvalue']) : null,
-		'paddingyvalue'		=> ($global_style['globalpaddingyvalue']) ? intval($global_style['globalpaddingyvalue']) : null,
-		'buttonfontsize'	=> ($global_style['globalbuttonfontsize']) ? intval($global_style['globalbuttonfontsize']) : null,
-		'buttontracking'	=> ($global_style['globalbuttontracking']) ? intval($global_style['globalbuttontracking']) : null,
-		'buttontext'		=> ($global_style['globalbuttontext']) ? sanitize_text_field($global_style['globalbuttontext']) : null,
-		'buttoncssclass'	=> ($global_style['globalbuttoncssclass']) ? sanitize_text_field($global_style['globalbuttoncssclass']) : null
+		'buttonbgcolor'		=> ($global_style['globalbuttonbgcolor']) ? $global_style['globalbuttonbgcolor'] : null,
+		'buttontextcolor'	=> ($global_style['globalbuttontextcolor']) ? $global_style['globalbuttontextcolor'] : null,
+		'borderradiusvalue'	=> ($global_style['globalborderradiusvalue']) ? $global_style['globalborderradiusvalue'] : null,
+		'paddingxvalue'		=> ($global_style['globalpaddingxvalue']) ? $global_style['globalpaddingxvalue'] : null,
+		'paddingyvalue'		=> ($global_style['globalpaddingyvalue']) ? $global_style['globalpaddingyvalue'] : null,
+		'buttonfontsize'	=> ($global_style['globalbuttonfontsize']) ? $global_style['globalbuttonfontsize'] : null,
+		'buttontracking'	=> ($global_style['globalbuttontracking']) ? $global_style['globalbuttontracking'] : null,
+		'buttontext'		=> ($global_style['globalbuttontext']) ? $global_style['globalbuttontext'] : null,
+		'buttoncssclass'	=> ($global_style['globalbuttoncssclass']) ? $global_style['globalbuttoncssclass'] : null
 
 	);
 
@@ -365,8 +365,19 @@ function aavoya_waraqspm($product_id = null, $button_data = null)
 function aavoya_add_global_settings_data($global_settings = null)
 {
 	if ($global_settings != null) {
-		$global_settings = serialize($global_settings);
-		return update_option('aavoya_wraq_global_settings', $global_settings);
+
+		$global_settings_safe = array(
+		'globalbuttonbgcolor'       => ($global_settings['globalBgColor']) ? sanitize_hex_color($global_settings['globalBgColor']) : null,
+		'globalbuttontextcolor'     => ($global_settings['globalTextColor']) ? sanitize_hex_color($global_settings['globalTextColor']) : null,
+		'globalborderradiusvalue'   => ($global_settings['globalBorderRadius']) ? intval($global_settings['globalBorderRadius']) : null,
+		'globalpaddingxvalue'       => ($global_settings['globalPaddingX']) ? intval($global_settings['globalPaddingX']) : null,
+		'globalpaddingyvalue'       => ($global_settings['globalPaddingY']) ? intval($global_settings['globalPaddingY']) : null,
+		'globalbuttonfontsize'      => ($global_settings['globalFontSize']) ? intval($global_settings['globalFontSize']) : null,
+		'globalbuttontracking'      => ($global_settings['globalTracking']) ? intval($global_settings['globalTracking']) : null,
+		'globalbuttontext'          => ($global_settings['globalText']) ? sanitize_text_field($global_settings['globalText']) : null,
+		'globalbuttoncssclass'      => ($global_settings['globalCssClass']) ? sanitize_html_class($global_settings['globalCssClass']) : null
+		);
+		return update_option('aavoya_wraq_global_settings', serialize($global_settings_safe));
 	}
 
 	return false;
@@ -382,6 +393,20 @@ function aavoya_add_global_settings_data($global_settings = null)
 function aavoya_get_global_data()
 {
 	if (get_option('aavoya_wraq_global_settings') != null) {
-		return unserialize(get_option('aavoya_wraq_global_settings'));
+
+		$global_style = unserialize(get_option('aavoya_wraq_global_settings'));
+
+		return array(
+			'globalbuttonbgcolor'		=> ($global_style['globalbuttonbgcolor']) ? sanitize_hex_color($global_style['globalbuttonbgcolor']) : null,
+			'globalbuttontextcolor'	    => ($global_style['globalbuttontextcolor']) ? sanitize_hex_color($global_style['globalbuttontextcolor']) : null,
+			'globalborderradiusvalue'	=> ($global_style['globalborderradiusvalue']) ? intval($global_style['globalborderradiusvalue']) : null,
+			'globalpaddingxvalue'		=> ($global_style['globalpaddingxvalue']) ? intval($global_style['globalpaddingxvalue']) : null,
+			'globalpaddingyvalue'		=> ($global_style['globalpaddingyvalue']) ? intval($global_style['globalpaddingyvalue']) : null,
+			'globalbuttonfontsize'	    => ($global_style['globalbuttonfontsize']) ? intval($global_style['globalbuttonfontsize']) : null,
+			'globalbuttontracking'	    => ($global_style['globalbuttontracking']) ? intval($global_style['globalbuttontracking']) : null,
+			'globalbuttontext'		    => ($global_style['globalbuttontext']) ? sanitize_text_field($global_style['globalbuttontext']) : null,
+			'globalbuttoncssclass'	    => ($global_style['globalbuttoncssclass']) ? sanitize_text_field($global_style['globalbuttoncssclass']) : null
+		);
+
 	}
 }

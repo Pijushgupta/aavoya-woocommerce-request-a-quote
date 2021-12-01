@@ -254,30 +254,12 @@ function save_global_setting()
 
 	if (isset($_POST) && wp_verify_nonce($_POST['nonce'], 'awraq_nonce')) {
 
-		$globaldata = array();
-
-		/**
-		 * Sanitizing the data going to database as options
-		 */
-
-
-		$globaldata['globalbuttonbgcolor'] 		= ($_POST['globaldata']['globalBgColor']) ? sanitize_hex_color($_POST['globaldata']['globalBgColor']) : null;
-		$globaldata['globalbuttontextcolor']	= ($_POST['globaldata']['globalTextColor']) ? sanitize_hex_color($_POST['globaldata']['globalTextColor']) : null;
-		$globaldata['globalborderradiusvalue']	= ($_POST['globaldata']['globalBorderRadius']) ? intval($_POST['globaldata']['globalBorderRadius']) : null;
-		$globaldata['globalpaddingxvalue']		= ($_POST['globaldata']['globalPaddingX']) ? intval($_POST['globaldata']['globalPaddingX']) : null;
-		$globaldata['globalpaddingyvalue']		= ($_POST['globaldata']['globalPaddingY']) ? intval($_POST['globaldata']['globalPaddingY']) : null;
-		$globaldata['globalbuttonfontsize']		= ($_POST['globaldata']['globalFontSize']) ? intval($_POST['globaldata']['globalFontSize']) : null;
-		$globaldata['globalbuttontracking']		= ($_POST['globaldata']['globalTracking']) ? intval($_POST['globaldata']['globalTracking']) : null;
-		$globaldata['globalbuttontext']			= ($_POST['globaldata']['globalText']) ? sanitize_text_field($_POST['globaldata']['globalText']) : null;
-		$globaldata['globalbuttoncssclass']		= ($_POST['globaldata']['globalCssClass']) ? sanitize_html_class($_POST['globaldata']['globalCssClass']) : null;
-
-
 		/**
 		 * this sending either TRUE on successful update else False
 		 * 
 		 * no need to send this back to the frontend But this might be in use in future for feature addition 
 		 */
-		echo json_encode(aavoya_add_global_settings_data($globaldata));
+		echo json_encode(aavoya_add_global_settings_data($_POST['globaldata']));
 
 		wp_die();
 	}
