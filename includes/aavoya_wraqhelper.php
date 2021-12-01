@@ -397,15 +397,15 @@ function aavoya_get_global_data()
 		$global_style = unserialize(get_option('aavoya_wraq_global_settings'));
 
 		return array(
-			'globalbuttonbgcolor'		=> ($global_style['globalbuttonbgcolor']) ? sanitize_hex_color($global_style['globalbuttonbgcolor']) : null,
-			'globalbuttontextcolor'	    => ($global_style['globalbuttontextcolor']) ? sanitize_hex_color($global_style['globalbuttontextcolor']) : null,
-			'globalborderradiusvalue'	=> ($global_style['globalborderradiusvalue']) ? intval($global_style['globalborderradiusvalue']) : null,
-			'globalpaddingxvalue'		=> ($global_style['globalpaddingxvalue']) ? intval($global_style['globalpaddingxvalue']) : null,
-			'globalpaddingyvalue'		=> ($global_style['globalpaddingyvalue']) ? intval($global_style['globalpaddingyvalue']) : null,
-			'globalbuttonfontsize'	    => ($global_style['globalbuttonfontsize']) ? intval($global_style['globalbuttonfontsize']) : null,
-			'globalbuttontracking'	    => ($global_style['globalbuttontracking']) ? intval($global_style['globalbuttontracking']) : null,
-			'globalbuttontext'		    => ($global_style['globalbuttontext']) ? sanitize_text_field($global_style['globalbuttontext']) : null,
-			'globalbuttoncssclass'	    => ($global_style['globalbuttoncssclass']) ? sanitize_text_field($global_style['globalbuttoncssclass']) : null
+			'globalbuttonbgcolor'       => ($global_style['globalbuttonbgcolor']) ? sanitize_hex_color($global_style['globalbuttonbgcolor']) : null,
+			'globalbuttontextcolor'     => ($global_style['globalbuttontextcolor']) ? sanitize_hex_color($global_style['globalbuttontextcolor']) : null,
+			'globalborderradiusvalue'   => ($global_style['globalborderradiusvalue']) ? intval($global_style['globalborderradiusvalue']) : null,
+			'globalpaddingxvalue'       => ($global_style['globalpaddingxvalue']) ? intval($global_style['globalpaddingxvalue']) : null,
+			'globalpaddingyvalue'       => ($global_style['globalpaddingyvalue']) ? intval($global_style['globalpaddingyvalue']) : null,
+			'globalbuttonfontsize'      => ($global_style['globalbuttonfontsize']) ? intval($global_style['globalbuttonfontsize']) : null,
+			'globalbuttontracking'      => ($global_style['globalbuttontracking']) ? intval($global_style['globalbuttontracking']) : null,
+			'globalbuttontext'          => ($global_style['globalbuttontext']) ? sanitize_text_field($global_style['globalbuttontext']) : null,
+			'globalbuttoncssclass'      => ($global_style['globalbuttoncssclass']) ? sanitize_text_field($global_style['globalbuttoncssclass']) : null
 		);
 
 	}
