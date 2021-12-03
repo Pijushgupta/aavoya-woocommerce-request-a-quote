@@ -139,28 +139,7 @@ function save_button_data()
 		if (wp_verify_nonce($nonce, 'awraq_nonce')) {
 
 			$id = intval($_POST['nodeid']);
-
-			$data = array(
-
-
-				//TODO: add global data in-case no data provided by use
-
-
-				'contact7form'		=> ($_POST['contact7form']) ? intval($_POST['contact7form']) : null,
-				'borderradiusvalue'	=> ($_POST['borderradius']) ? intval($_POST['borderradius']) : null,
-				'paddingxvalue'		=> ($_POST['paddingx']) ? intval($_POST['paddingx']) : null,
-				'paddingyvalue'		=> ($_POST['paddingy']) ? intval($_POST['paddingy']) : null,
-				'buttonbgcolor'		=> ($_POST['buttonbgcolor']) ? sanitize_hex_color($_POST['buttonbgcolor']) : null,
-				'buttontextcolor'	=> ($_POST['buttontextcolor']) ? sanitize_hex_color($_POST['buttontextcolor']) : null,
-				'buttontext'		=> ($_POST['buttontext']) ? sanitize_text_field($_POST['buttontext']) : null,
-				'buttontracking'	=> ($_POST['buttontracking']) ? intval($_POST['buttontracking']) : null,
-				'buttonfontsize'	=> ($_POST['buttonfontsize']) ? intval($_POST['buttonfontsize']) : null,
-				'buttoncssclass'	=> (($_POST['buttoncssclass'])) ? sanitize_html_class($_POST['buttoncssclass']) : null
-
-			);
-
-
-			$reply = aavoya_wraqap($id, $data);
+			$reply = aavoya_wraqap($id, $_POST);
 			echo json_encode($reply);
 			wp_die();
 		}

@@ -81,6 +81,7 @@ function aavoya_apply_global_style($button_id = null)
  * Get oldest contact 7 form id
  * @param null
  * @return int $firstKey
+ * QA: PASS
  */
 function aavoya_wraqgoc7f(){
 
@@ -94,7 +95,7 @@ function aavoya_wraqgoc7f(){
 	 * Objective: To get the oldest contact 7 form id.
 	 * more info on ksort: https://www.php.net/manual/en/function.ksort.php or https://www.w3schools.com/php/func_array_ksort.asp
 	 * note: ksort works on "call by reference" not "call by value" , So the original array will get modified. Because of that we
-	 * need not to store the return value.  
+	 * need not to store the return value.
 	 */
 	ksort($contact7formlist, SORT_NUMERIC);
 
@@ -129,7 +130,8 @@ function aavoya_wraqgoc7f(){
 
 /**
  * This to get a list of forms of contact 7
- * @return mixed
+ * @return array $formatted_forms
+ * QA: PASS
  */
 function aavoya_wraqgc7fl()
 {
@@ -159,7 +161,7 @@ function aavoya_wraqgc7fl()
 
 	foreach ($contact_7_forms as $contact_7_form) {
 
-		$formatted_forms[$contact_7_form->ID] = esc_html($contact_7_form->post_title);
+		$formatted_forms[intval($contact_7_form->ID)] = esc_html($contact_7_form->post_title);
 	}
 
 	return $formatted_forms;
@@ -171,7 +173,7 @@ function aavoya_wraqgc7fl()
 /**
  * This to get all existing list of shortcodes
  * @return array
- *
+ * QA:PASS
  * */
 function aavoya_wraqgap()
 {
@@ -217,8 +219,8 @@ function aavoya_wraqgap()
 	 */
 	foreach ($shortcodes as $key => $shortcode) {
 
-		$container[$key]['id'] = $shortcode->ID;
-		$container[$key]['short_code'] = '[awraqsci id="' . $shortcode->ID . '"]';
+		$container[$key]['id'] = intval($shortcode->ID);
+		$container[$key]['short_code'] = strval('[awraqsci id="' . $shortcode->ID . '"]');
 		$container[$key]['forms'] = $formatted_forms;
 		$container[$key]['postmeta'] = aavoya_gpm($shortcode->ID);
 	}
@@ -237,13 +239,29 @@ function aavoya_wraqgap()
  * aavoya_gpm
  * It will return all the needed post meta value in a array
  * @param int $id
- * @return array
+ * @return false/array
+ * QA:PASS
  */
 function aavoya_gpm($id = null)
 {
 	if ($id == null) return false;
 
-	return unserialize(get_post_meta($id, 'aavoya_wraq_meta_key', true));
+	$button_post_meta =  unserialize(get_post_meta($id, 'aavoya_wraq_meta_key', true));
+
+	$button_post_meta_safe =  array(
+		'contact7form'      => ($button_post_meta['contact7form']) ? intval($button_post_meta['contact7form']) : null,
+		'buttonbgcolor'     => ($button_post_meta['buttonbgcolor']) ? sanitize_hex_color($button_post_meta['buttonbgcolor']) : null,
+		'buttontextcolor'   => ($button_post_meta['buttontextcolor']) ? sanitize_hex_color($button_post_meta['buttontextcolor']) : null,
+		'borderradiusvalue' => ($button_post_meta['borderradiusvalue']) ? intval($button_post_meta['borderradiusvalue']) : null,
+		'paddingxvalue'     => ($button_post_meta['paddingxvalue']) ? intval($button_post_meta['paddingxvalue']) : null,
+		'paddingyvalue'     => ($button_post_meta['paddingyvalue']) ? intval($button_post_meta['paddingyvalue']) : null,
+		'buttonfontsize'    => ($button_post_meta['buttonfontsize']) ? intval($button_post_meta['buttonfontsize']) : null,
+		'buttontracking'    => ($button_post_meta['buttontracking']) ? intval($button_post_meta['buttontracking']) : null,
+		'buttontext'        => ($button_post_meta['buttontext']) ? sanitize_text_field($button_post_meta['buttontext']) : null,
+		'buttoncssclass'    => ($button_post_meta['buttoncssclass']) ? sanitize_html_class($button_post_meta['buttoncssclass']) : null
+	);
+
+	return $button_post_meta_safe;
 }
 
 
@@ -255,6 +273,7 @@ function aavoya_gpm($id = null)
  * @param  int $id
  * @param  mixed $postdata
  * @return bool
+ * QA:PASS
  */
 function aavoya_wraqap($id = null, $postdata = null)
 {
@@ -263,9 +282,23 @@ function aavoya_wraqap($id = null, $postdata = null)
 		return false;
 	}
 
-	$postdata = serialize($postdata);
+	$postdata_safe = array(
+		'contact7form'		=> ($postdata['contact7form']) ? intval($postdata['contact7form']) : null,
+		'borderradiusvalue'	=> ($postdata['borderradius']) ? intval($postdata['borderradius']) : null,
+		'paddingxvalue'		=> ($postdata['paddingx']) ? intval($postdata['paddingx']) : null,
+		'paddingyvalue'		=> ($postdata['paddingy']) ? intval($postdata['paddingy']) : null,
+		'buttonbgcolor'		=> ($postdata['buttonbgcolor']) ? sanitize_hex_color($postdata['buttonbgcolor']) : null,
+		'buttontextcolor'	=> ($postdata['buttontextcolor']) ? sanitize_hex_color($postdata['buttontextcolor']) : null,
+		'buttontext'		=> ($postdata['buttontext']) ? sanitize_text_field($postdata['buttontext']) : null,
+		'buttontracking'	=> ($postdata['buttontracking']) ? intval($postdata['buttontracking']) : null,
+		'buttonfontsize'	=> ($postdata['buttonfontsize']) ? intval($postdata['buttonfontsize']) : null,
+		'buttoncssclass'	=> ($postdata['buttoncssclass']) ? sanitize_html_class($postdata['buttoncssclass']) : null
+	);
 
-	update_post_meta($id, "aavoya_wraq_meta_key", $postdata);
+
+	$postdata_safe = serialize($postdata_safe);
+
+	update_post_meta($id, "aavoya_wraq_meta_key", $postdata_safe);
 
 	return true;
 }
@@ -276,6 +309,7 @@ function aavoya_wraqap($id = null, $postdata = null)
  * This to delete a button(post) and all of its setting data.
  * @param  mixed $id
  * @return bool
+ * QA:PASS
  */
 function aavoya_wraqdp($id = null)
 {
@@ -294,6 +328,7 @@ function aavoya_wraqdp($id = null)
  * aavoya_wraqwop
  * This to prepare product and shortcode data as ajax reply to be sent to front end
  * @return void
+ * QA:PASS
  */
 function aavoya_wraqwop()
 {
@@ -324,8 +359,8 @@ function aavoya_wraqwop()
 	 * and filtering the shortcodes
 	 */
 	foreach ($buttons as $key => $button) {
-		$button_shortcodes[$key]['short_code'] = $button['short_code'];
-		$button_shortcodes[$key]['id'] = $button['id'];
+		$button_shortcodes[$key]['short_code'] = strval($button['short_code']);
+		$button_shortcodes[$key]['id'] = intval($button['id']);
 	}
 
 	/**
@@ -340,8 +375,8 @@ function aavoya_wraqwop()
 	 */
 	foreach ($wraq_products as $key => $wraq_product) {
 
-		$container[$key]['id']		= $wraq_product->ID;
-		$container[$key]['title']	= $wraq_product->post_title;
+		$container[$key]['id']		= intval($wraq_product->ID);
+		$container[$key]['title']	= esc_html($wraq_product->post_title);
 		$container[$key]['options']	= $button_shortcodes;
 		$container[$key]['button']	= unserialize(get_post_meta($wraq_product->ID, 'aavoya_wraqp_meta_key', true));
 	}
@@ -358,6 +393,7 @@ function aavoya_wraqwop()
  * @param array $button_data 
  * @return mixed (int|bool) Meta ID if the key didn't exist, true on successful update, false on failure or if the value passed to the 
  * function is the same as the one that is already in the database.
+ * QA:PASS
  */
 function aavoya_waraqspm($product_id = null, $button_data = null)
 {
@@ -375,6 +411,7 @@ function aavoya_waraqspm($product_id = null, $button_data = null)
  * This function to save to global button data for default styling 
  * @param array $global_settings	
  * @return boolean
+ * QA:PASS
  */
 function aavoya_add_global_settings_data($global_settings = null)
 {
@@ -402,7 +439,7 @@ function aavoya_add_global_settings_data($global_settings = null)
  * aavoya_get_global_data
  * This function to provide to global button data for default styling
  * @return array 
- * 
+ * QA:PASS
  */
 function aavoya_get_global_data()
 {
