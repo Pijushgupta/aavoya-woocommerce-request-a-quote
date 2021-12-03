@@ -92,21 +92,35 @@ function aavoya_wraqgoc7f(){
 	/**
 	 * Sorting array elements by its key. Key with lowest value(not keys value, treating the key as value) will get listed first.
 	 * Objective: To get the oldest contact 7 form id.
+	 * more info on ksort: https://www.php.net/manual/en/function.ksort.php or https://www.w3schools.com/php/func_array_ksort.asp
+	 * note: ksort works on "call by reference" not "call by value" , So the original array will get modified. Because of that we
+	 * need not to store the return value.  
 	 */
 	ksort($contact7formlist, SORT_NUMERIC);
 
 	/**
-	 * Now from the above array picking the very first key.
-	 * we are using normal foreach instead of array_key_first() just to keep backward compatibility.
-	 * Since array_key_first() introduced in Php 7.3.0
+	 * Now from the above array picking the very first key
+	 * Since array_key_first() introduced in Php 7.3.0 it will not php version below 7.3.0
+	 * For that purpose only we are using if else in case its below 7.3.0 version then else statement will get executed
+	 * and no need to worry about anything .
+	 * more about array_key_first() : https://www.php.net/manual/en/function.array-key-first.php
 	 */
 
-	$firstKey;
+	$firstKey = '' ;
 
-	foreach($contact7formlist as $key => $contact7form){
-		$firstKey = $key;
-		break;
+	if(function_exists('array_key_first')){
+
+		$firstKey = array_key_first($contact7formlist);
+
+	}else{
+
+		foreach ($contact7formlist as $key => $contact7form ){
+			$firstKey = $key;
+			break;
+		}
 	}
+
+
 
 	return intval($firstKey);
 }

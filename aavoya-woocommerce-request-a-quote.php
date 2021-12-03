@@ -7,8 +7,8 @@ if (!defined('ABSPATH')) {
  * Plugin Name: Aavoya Request a Quote
  * Plugin URI: https://www.aavoya.co/aavoya-request-a-quote
  * Description: Add Request a quote button on single products or on Product Categories or Product tags.
- * Version: 2021.11
- * Requires PHP: 5
+ * Version: 2021.12
+ * Requires PHP: 7.3.0
  * Author: Pijush Gupta
  * Author URI: https://www.linkedin.com/in/pijush-gupta-php/
  * License: GPLv2 or later
