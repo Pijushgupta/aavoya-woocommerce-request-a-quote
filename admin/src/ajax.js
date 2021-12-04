@@ -101,16 +101,24 @@
             //TODO: add a conditional block to check if the response is null or not , if not null then show the data
 
             response.forEach(function (value, index, array) {
-                
+
                 var forms = value["forms"];
                 var forms_select_options = "";
+                var postmeta = value["postmeta"];
+                var previouslySeletecFormId = postmeta.contact7form;
 
                 for (const [key, value] of Object.entries(forms)) {
+
+                    let selectedForm = "";
+                    if(previouslySeletecFormId == key){
+                        selectedForm = "selected";
+                    }
+
                     forms_select_options +=
-                        '<option value="' + key + '">' + key + " - " + value + "</option>";
+                        '<option value="' + key + '"'+ selectedForm+'>' + key + " - " + value + "</option>";
                 }
 
-                var postmeta = value["postmeta"];
+
                
 
                 //preparing the data
