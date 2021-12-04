@@ -107,6 +107,8 @@
                 var postmeta = value["postmeta"];
                 var previouslySeletecFormId = postmeta.contact7form;
 
+                console.log(previouslySeletecFormId);
+
                 for (const [key, value] of Object.entries(forms)) {
 
                     let selectedForm = "";
@@ -114,8 +116,7 @@
                         selectedForm = "selected";
                     }
 
-                    forms_select_options +=
-                        '<option value="' + key + '"'+ selectedForm+'>' + key + " - " + value + "</option>";
+                    forms_select_options += '<option value="' + key + '"'+ selectedForm+'>' + key + " - " + value + "</option>";
                 }
 
 

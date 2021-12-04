@@ -186,18 +186,18 @@
 	 */
 	jQuery(".wp-appender").on("click", ".save", function () {
 
-		var alldata = jQuery(this).parent().parent().parent();
-		var nodeId = alldata.attr('id');
-		var contact7form		= alldata.parent().find(".contact-7-selected").val();
-		var borderRadiusValue 	= alldata.find(".borderradius").val();
-		var paddingXValue 		= alldata.find(".paddingx").val();
-		var paddingYValue 		= alldata.find(".paddingy").val();
-		var buttonBgColor 		= alldata.find(".bgcolor").val();
-		var buttonTextColor 	= alldata.find(".textcolor").val();
-		var buttonText 			= alldata.find(".bottontext").val(); 
-		var buttonTracking 		= alldata.find(".buttontracking").val();
-		var buttonFontSize 		= alldata.find(".buttonfontsize").val();
-		var buttonCssClass 		= alldata.find(".cssclass").val();
+		let alldata = jQuery(this).parent().parent().parent();
+		let nodeId = alldata.attr('id');
+		let contact7form		= alldata.parent().find(".contact-7-selected").val();
+		let borderRadiusValue 	= alldata.find(".borderradius").val();
+		let paddingXValue 		= alldata.find(".paddingx").val();
+		let paddingYValue 		= alldata.find(".paddingy").val();
+		let buttonBgColor 		= alldata.find(".bgcolor").val();
+		let buttonTextColor 	= alldata.find(".textcolor").val();
+		let buttonText 			= alldata.find(".bottontext").val();
+		let buttonTracking 		= alldata.find(".buttontracking").val();
+		let buttonFontSize 		= alldata.find(".buttonfontsize").val();
+		let buttonCssClass 		= alldata.find(".cssclass").val();
 		
 		sendSettingsData(
 			nodeId,
