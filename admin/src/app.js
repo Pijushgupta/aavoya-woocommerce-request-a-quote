@@ -240,7 +240,9 @@
 		buttonTracking,
 		buttonFontSize,
 		buttonCssClass) {
-		
+
+		console.log(contact7form);
+
 		jQuery.ajax({
 			url: ajaxurl,
 			type: "post",
