@@ -102,12 +102,12 @@
 
             response.forEach(function (value, index, array) {
 
-                var forms = value["forms"];
-                var forms_select_options = "";
-                var postmeta = value["postmeta"];
-                var previouslySeletecFormId = postmeta.contact7form;
+                let forms = value["forms"];
+                let forms_select_options = "";
+                let postmeta = value["postmeta"];
+                let previouslySeletecFormId = postmeta.contact7form;
 
-                console.log(previouslySeletecFormId);
+
 
                 for (const [key, value] of Object.entries(forms)) {
 
