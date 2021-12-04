@@ -96,7 +96,7 @@
 
         success: function (response) {
             response = JSON.parse(response);
-            
+            console.log(response);
 
             //TODO: add a conditional block to check if the response is null or not , if not null then show the data
 
