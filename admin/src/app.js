@@ -188,8 +188,7 @@
 
 		let alldata = jQuery(this).parent().parent().parent();
 		let nodeId = alldata.attr('id');
-		let rowClassName = "row"+nodeId;
-		let contact7form		= jQuery(".wp-appender").find("."+rowClassName).find('.contact-7-selected').val();
+		let contact7form		= jQuery(".wp-appender").find('.select'+nodeId).val();
 		let borderRadiusValue 	= alldata.find(".borderradius").val();
 		let paddingXValue 		= alldata.find(".paddingx").val();
 		let paddingYValue 		= alldata.find(".paddingy").val();

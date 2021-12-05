@@ -57,7 +57,9 @@ if (class_exists("base")) {
 			/**
 			 * Terminate the program if no post id provided with shortcode
 			 */
-			if ($attr == null) { return "No id Provided";}
+			if ($attr == null) {
+				return "No id Provided";
+			}
 
 
 
@@ -78,7 +80,10 @@ if (class_exists("base")) {
 
 
 
-			$buttonId = intval($attr['id']); $buttonText = 'Button'; $cssClass = ''; $randomValueForJs = rand();
+			$buttonId = intval($attr['id']);
+			$buttonText = __('Button', 'aavoya-woocommerce-request-a-quote');
+			$cssClass = '';
+			$randomValueForJs = rand();
 
 
 
@@ -101,15 +106,13 @@ if (class_exists("base")) {
 
 			if ($unserializeButtonMeta['buttontext']) {
 
-				$buttonText = $unserializeButtonMeta['buttontext'];
-
+				$buttonText = __($unserializeButtonMeta['buttontext'], 'aavoya-woocommerce-request-a-quote');
 			}
 
 
 			if ($unserializeButtonMeta['buttoncssclass']) {
 
 				$cssClass = $unserializeButtonMeta['buttoncssclass'];
-
 			}
 
 
@@ -145,7 +148,6 @@ if (class_exists("base")) {
 					add_action('woocommerce_product_meta_start', function () {
 
 						echo do_shortcode('[awraqsci id="' . $this->aavoya_wraqgpbd()['buttonid'] . '"]');
-
 					}, 30);
 				}
 			}
@@ -173,7 +175,6 @@ if (class_exists("base")) {
 				return $data;
 			}
 		}
-
 	} /*class ends here*/
 
 	/**

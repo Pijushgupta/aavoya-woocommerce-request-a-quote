@@ -33,19 +33,21 @@ class aavoya_wraqf
 			/**
 			 * Sanitizing before sending button meta back
 			 */
-			$aavoya_button_meta['contact7form'] = intval($aavoya_button_meta['contact7form']);
-			$aavoya_button_meta['borderradiusvalue'] = intval($aavoya_button_meta['borderradiusvalue']);
-			$aavoya_button_meta['paddingxvalue'] = intval($aavoya_button_meta['paddingxvalue']);
-			$aavoya_button_meta['paddingyvalue'] = intval($aavoya_button_meta['paddingyvalue']);
-			$aavoya_button_meta['buttonbgcolor'] = sanitize_hex_color($aavoya_button_meta['buttonbgcolor']);
-			$aavoya_button_meta['buttontextcolor'] = sanitize_hex_color($aavoya_button_meta['buttontextcolor']);
-			$aavoya_button_meta['buttontext'] = sanitize_text_field($aavoya_button_meta['buttontext']);
-			$aavoya_button_meta['buttontracking'] = intval($aavoya_button_meta['buttontracking']);
-			$aavoya_button_meta['buttonfontsize'] = intval($aavoya_button_meta['buttonfontsize']);
-			$aavoya_button_meta['buttoncssclass'] = sanitize_html_class($aavoya_button_meta['buttoncssclass']);
+			$aavoya_button_meta['contact7form']			= intval($aavoya_button_meta['contact7form']);
+			$aavoya_button_meta['borderradiusvalue']	= intval($aavoya_button_meta['borderradiusvalue']);
+			$aavoya_button_meta['paddingxvalue']		= intval($aavoya_button_meta['paddingxvalue']);
+			$aavoya_button_meta['paddingyvalue']		= intval($aavoya_button_meta['paddingyvalue']);
+			$aavoya_button_meta['buttonbgcolor']		= sanitize_hex_color($aavoya_button_meta['buttonbgcolor']);
+			$aavoya_button_meta['buttontextcolor']		= sanitize_hex_color($aavoya_button_meta['buttontextcolor']);
+			$aavoya_button_meta['buttontext']			= sanitize_text_field($aavoya_button_meta['buttontext']);
+			$aavoya_button_meta['buttontracking']		= intval($aavoya_button_meta['buttontracking']);
+			$aavoya_button_meta['buttonfontsize']		= intval($aavoya_button_meta['buttonfontsize']);
+			$aavoya_button_meta['buttoncssclass']		= sanitize_html_class($aavoya_button_meta['buttoncssclass']);
 
 			return $aavoya_button_meta;
 		}
+
+		return false;
 	}
 
 	/**
@@ -122,7 +124,7 @@ class aavoya_wraqf
 		}
 
 		$html = '<p><button style="' . $inlineCss . '" class="ainipopup ' . $cssClass . '" popuptoopen="araq' . $randomValueForJs . '">' . $buttonText . '</button></p>';
-		$html .= '<div class="modal contact-7-popup md:w-1/3 w-full  hidden" id="araq' . $randomValueForJs . '"> <div class="bg-white border border-gray-100  m-4 rounded shadow "> <svg class="w-8 h-8 text-red-600 float-right -mr-3 -mt-3 bg-white rounded-full aavoyaclose cursor-pointer shadow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> <div class="modal-body  modal-body overflow-hidden rounded "> <div class="p-4"> ' . do_shortcode('[contact-form-7 id="' . $contact7form . '"]') . '<div class="flex justify-between items-center mt-1"> </div> </div> </div> </div> </div>';
+		$html .= '<div class="modal contact-7-popup md:w-1/3 w-full  hidden" id="araq' . $randomValueForJs . '"> <div class="bg-white border border-gray-100  m-4 rounded shadow "> <svg class="w-8 h-8 text-gray-500 float-right  bg-white rounded-full aavoyaclose cursor-pointer shadow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> <div class="modal-body  modal-body overflow-hidden rounded "> <div class="p-4"> ' . do_shortcode('[contact-form-7 id="' . $contact7form . '"]') . '<div class="flex justify-between items-center mt-1"> </div> </div> </div> </div> </div>';
 
 		return $html;
 	}
