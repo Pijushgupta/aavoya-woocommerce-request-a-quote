@@ -95,8 +95,8 @@
 		let buttonBgcolor = jQuery(this).val();
 
 		
-		//rgb2hex('rgb(255,251,250)')
-        //console.log(buttonBgcolor);
+		
+       
         jQuery(this)
             .parent()
             .parent()
@@ -110,7 +110,7 @@
     //this to live update the button color
     jQuery(".wp-appender").on("change",".textcolor", function(){
         let buttonColor = jQuery(this).val();
-        //console.log(buttonColor);
+        
         jQuery(this)
             .parent()
             .parent()

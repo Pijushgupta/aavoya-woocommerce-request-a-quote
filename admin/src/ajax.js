@@ -19,10 +19,10 @@
 
             success: function (response) {
                 response = JSON.parse(response);
-                //console.log(response.style);
+                
 				forms_select_obj = response.forms;
 				
-				console.log(response);
+				
                 var forms_select_options = "";
 
                 for (const [key, value] of Object.entries(forms_select_obj)) {
@@ -96,7 +96,7 @@
 
         success: function (response) {
             response = JSON.parse(response);
-            console.log(response);
+            
 
             //TODO: add a conditional block to check if the response is null or not , if not null then show the data
 
