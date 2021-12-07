@@ -107,7 +107,6 @@ register_deactivation_hook(__FILE__, 'aavoyaOnDeactivation');
  */
 function aavoyaOnUninstall()
 {
-	
 }
 register_uninstall_hook(__FILE__, 'aavoyaOnUninstall');
 
@@ -131,12 +130,10 @@ function aavoyaOnPluginsLoad()
 
 		deactivate_plugins('aavoya-woocommerce-request-a-quote/aavoya-woocommerce-request-a-quote.php');
 		add_action('admin_notices', 'aavoya_admin_notice');
-
 	} else {
 
 		require_once aavoyaWraqAbsolute . 'includes/index.php';
 		require_once aavoyaWraqAbsolute . 'public/index.php';
-
 	}
 }
 add_action('plugins_loaded', 'aavoyaOnPluginsLoad');
@@ -154,5 +151,5 @@ add_action('plugins_loaded', 'aavoyaOnPluginsLoad');
  */
 function aavoya_admin_notice()
 {
-	echo '<div class="error"><p>Plugin deactivated. Please activate contact form 7 plugin!</p></div>';
+	echo '<div class="error"><p>' . __('Plugin deactivated. Please activate contact form 7 plugin!', 'aavoya-woocommerce-request-a-quote') . '</p></div>';
 }
