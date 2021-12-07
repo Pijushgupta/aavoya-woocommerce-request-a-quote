@@ -3,9 +3,11 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class aavoya_initdata extends base {
+class aavoya_initdata extends base
+{
 
-	function __construct(){
+	function __construct()
+	{
 		/**
 		 * adding default data(option - css) incase its not present in database.
 		 */
@@ -13,12 +15,28 @@ class aavoya_initdata extends base {
 			update_option('aavoya_wraq_global_settings', $this->aavoya_wraqagd());
 		}
 
+		/**
+		 * Setting initial value(ON) for woocommece toggle button top right of the tab
+		 */
+		if (get_option('wraqwo', null) == null) {
+
+			update_option('wraqwo', true, false);
+		}
+
+		/**
+		 * Setting initial value(ON) for wordpress toggle button top right of the tab
+		 */
+		if (get_option('wraqwp', null) == null) {
+
+			update_option('wraqwp', true, false);
+		}
 	}
 
 	/**
 	 * preparing default data
 	 */
-	public function aavoya_wraqagd(){
+	public function aavoya_wraqagd()
+	{
 		$globaldata['globalbuttonbgcolor']      = sanitize_hex_color('#1e3a8a');
 		$globaldata['globalbuttontextcolor']    = sanitize_hex_color('#ffffff');
 		$globaldata['globalborderradiusvalue']  = intval(8);
