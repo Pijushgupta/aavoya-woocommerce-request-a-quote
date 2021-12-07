@@ -192,75 +192,79 @@
 
     /**
      * This to auto-load all the products and associate button list on woo section 
+	 * @desc first it will check if woocommerce installed or not 
      */
-    jQuery.ajax({
+	if (jQuery('#awraqwoocom').val() == '1') {
+		jQuery.ajax({
 
-        url: ajaxurl,
-        type: "post",
-        dateType: "json",
-        data: {
-            action: "get_all_products",
-            nonce: jQuery("#awraqnonce").val(),
-        },
-
-        error: function (xhr, textStatus, errorThrown) {
-            console.log("Ajax Error");
-        },
-
-        success: function(presponse){
-
-            presponse = JSON.parse(presponse);
-
-            if(presponse != false){
-				
-                presponse.forEach(function(value, index, array){
-
-                    var buttons = value["options"];
-                    var selectOptions = "";
-					var isChecked = '';
-
+			url: ajaxurl,
+			type: "post",
+			dateType: "json",
+			data: {
+				action: "get_all_products",
+				nonce: jQuery("#awraqnonce").val(),
+			},
+	
+			error: function (xhr, textStatus, errorThrown) {
+				console.log("Ajax Error");
+			},
+	
+			success: function(presponse){
+	
+				presponse = JSON.parse(presponse);
+	
+				if(presponse != false){
 					
-
-					if (value.button != false) {
-						buttonSelected = parseInt(value.button.buttonid);
-						if (value.button.buttonstatus == true) {
-							isChecked = 'checked';
+					presponse.forEach(function(value, index, array){
+	
+						var buttons = value["options"];
+						var selectOptions = "";
+						var isChecked = '';
+	
+						
+	
+						if (value.button != false) {
+							buttonSelected = parseInt(value.button.buttonid);
+							if (value.button.buttonstatus == true) {
+								isChecked = 'checked';
+							}
+						} else {
+							buttonSelected = false;
 						}
-					} else {
-						buttonSelected = false;
-					}
-
+	
+						
+	
+						for (const [key, value] of Object.entries(buttons)) {
+							var selected = '';
+	
+							if (value.id == buttonSelected) {
+								selected = 'selected';
+							}
+	
+							selectOptions +='<option value="'+value.id+'"'+selected+'>' + value.short_code + '</option>';
+						}
+	
+	
 					
-
-					for (const [key, value] of Object.entries(buttons)) {
-						var selected = '';
-
-						if (value.id == buttonSelected) {
-							selected = 'selected';
-						}
-
-                        selectOptions +='<option value="'+value.id+'"'+selected+'>' + value.short_code + '</option>';
-                    }
-
-
-				
-
-
-
-                    var row =
-                        '<div class="row  w-full flex  justify-between relative z-30 rounded-sm shadow mt-2 items-center items-center bg-white row'+ value.id +'"  pid="'+ value.id +'">' +
-                        '<div class="md:w-2/5 p-2 text-left product-title"><span class="rounded-full bg-blue-100 text-blue-900 font-bold px-2 mr-1 py-1">'+value.id+'</span>' + value.title + "</div>" +
-                        '<div class="md:w-1/5 text-center">' +
-                        '<select name="selected_button" class="w-full code button-selected border border-gray-500 ">' + selectOptions + "</select>" +
-                        '</div>' +
-                      
-                        '<div class=" md:w-1/5 p-2 drawer-handle cursor-pointer text-center"><input type="checkbox"  class="rounded flex ml-auto mr-0 px-8 py-2 mt-2 bg-blue-900 text-white text-xs tracking-wide font-medium psave p-'+value.id+'" '+isChecked+'>'
-                        '</div></div>';
-                    jQuery("#woo-default-setting-area .woo-appender").append(row);
-                });
-
-            }
-        }
-    });
+	
+	
+	
+						var row =
+							'<div class="row  w-full flex  justify-between relative z-30 rounded-sm shadow mt-2 items-center items-center bg-white row'+ value.id +'"  pid="'+ value.id +'">' +
+							'<div class="md:w-2/5 p-2 text-left product-title"><span class="rounded-full bg-blue-100 text-blue-900 font-bold px-2 mr-1 py-1">'+value.id+'</span>' + value.title + "</div>" +
+							'<div class="md:w-1/5 text-center">' +
+							'<select name="selected_button" class="w-full code button-selected border border-gray-500 ">' + selectOptions + "</select>" +
+							'</div>' +
+						  
+							'<div class=" md:w-1/5 p-2 drawer-handle cursor-pointer text-center"><input type="checkbox"  class="rounded flex ml-auto mr-0 px-8 py-2 mt-2 bg-blue-900 text-white text-xs tracking-wide font-medium psave p-'+value.id+'" '+isChecked+'>'
+							'</div></div>';
+						jQuery("#woo-default-setting-area .woo-appender").append(row);
+					});
+	
+				}
+			}
+		});
+	}
+    
 
 })(jQuery);
