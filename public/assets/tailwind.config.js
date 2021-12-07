@@ -1,5 +1,5 @@
 module.exports = {
-	purge: [],
+	purge: ['./src/purge.tailwindcss.public/*.html'],
 	theme: {
 		extend: {},
 	},
