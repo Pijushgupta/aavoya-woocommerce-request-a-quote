@@ -28,10 +28,10 @@
 	 */
     jQuery("#enable-wordpress-id").on("change", function () {
         if (jQuery(this).is(":checked")) {
-            jQuery("#wordpress-default-setting-area").show();
+            
 			updateFormAreatoggleInformation('wp',true);
         } else {
-            jQuery("#wordpress-default-setting-area").hide();
+            
 			updateFormAreatoggleInformation('wp',false);
         }
     });
@@ -41,10 +41,10 @@
    	*/
     jQuery("#enable-woo-id").on("change", function(){
 		if (jQuery(this).is(":checked")) {
-			jQuery("#woo-default-setting-area").show();
+			
 			updateFormAreatoggleInformation('wo',true);
 		} else {
-			jQuery("#woo-default-setting-area").hide();
+			
 			updateFormAreatoggleInformation('wo',false);
 		}
 	});
