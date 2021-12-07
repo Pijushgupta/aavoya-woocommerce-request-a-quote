@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-if (class_exists("base")) {
+if (class_exists("base")) :
 
 	class aavoya_wraq_fn extends base
 	{
@@ -142,9 +142,14 @@ if (class_exists("base")) {
 
 				if ($data['buttonid'] && $data['buttonstatus'] == true && get_option('wraqwo') == TRUE && get_option('wraqwp') == TRUE) {
 
-
+					/**
+					 * Removing "Add to cart" button from product page
+					 */
 					remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
 
+					/**
+					 * Executing shortcode on "woocommerce_product_meta_start" action.
+					 */
 					add_action('woocommerce_product_meta_start', function () {
 
 						echo do_shortcode('[awraqsci id="' . $this->aavoya_wraqgpbd()['buttonid'] . '"]');
@@ -181,4 +186,4 @@ if (class_exists("base")) {
 	 * creating object of aavoya_wraq_fn
 	 */
 	$aavoya_wraq_fn = new aavoya_wraq_fn();
-} /* if condition ends here */
+endif; /* if condition ends here */
