@@ -151,5 +151,5 @@ add_action('plugins_loaded', 'aavoyaOnPluginsLoad');
  */
 function aavoya_admin_notice()
 {
-	echo '<div class="error"><p>' . __('Plugin deactivated. Please activate contact form 7 plugin!', 'aavoya-woocommerce-request-a-quote') . '</p></div>';
+	echo '<div class="error is-dismissible"><p>' . __('Plugin deactivated. Please activate contact form 7 plugin!', 'aavoya-woocommerce-request-a-quote') . '</p></div>';
 }
