@@ -115,7 +115,7 @@ class aavoya_wraqui extends base
 	{ ?>
 
 		<input type="hidden" name="awraq_nonce" id="awraqnonce" value="<?php echo wp_create_nonce("awraq_nonce"); ?>">
-		<input type="hidden" name="awraq_woocom" id="awraqwoocom" value="<?php echo aavoyaContact7; ?>">
+		<input type="hidden" name="awraq_woocom" id="awraqwoocom" value="<?php echo aavoyaWooCom; ?>">
 		<header class="header">
 			<div class="header-item">
 				<span class="title"><strong class="font-bold">Aavoya</strong> Request a Quote</span>
