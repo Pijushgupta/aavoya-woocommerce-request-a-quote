@@ -40,7 +40,7 @@
                     "</div></div>" +
                     '<div class="drawer  shadow rounded-sm p-2 -mt-1 pt-4 hidden transform duration-100 row'+response.id+'" id="' + response.id + '">'+
                     '<div class="w-full flex">'+
-                    '<div class="w-full py-4">'+
+                    '<div class="w-full py-4 flex justify-center p-8">'+
                     '<button class="block  border buttonborderradius '+response.style.buttoncssclass+'" id="button' + response.id + '" style="'+inlineCssStyle+'" >'+response.style.buttontext+'</button>' +
                     '</div></div>'+
                     '<div class="w-full flex bg-gray-100 p-2 rounded">' +
@@ -151,7 +151,7 @@
                     "</div></div>" +
                     '<div class="drawer  shadow rounded-sm p-2 -mt-1 pt-4 hidden transform duration-100 row'+ value.id +'" id="' + value.id + '">'+
                     '<div class="w-full flex">'+
-                    '<div class="w-full py-4">'+
+                    '<div class="w-full flex justify-center p-8">'+
                     '<button class="block px-8 py-4 border buttonborderradius" id="button' + value.id + '" style="'+style+'">'+ buttonTextPrep +'</button>' +
                     '</div></div>'+
                     '<div class="w-full flex bg-gray-100 p-2 rounded">' +
