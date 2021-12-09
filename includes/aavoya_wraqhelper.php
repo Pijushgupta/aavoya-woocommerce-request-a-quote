@@ -83,7 +83,8 @@ function aavoya_apply_global_style($button_id = null)
  * @return int $firstKey
  * QA: PASS
  */
-function aavoya_wraqgoc7f(){
+function aavoya_wraqgoc7f()
+{
 
 	/**
 	 * Getting all contact 7 forms
@@ -107,15 +108,14 @@ function aavoya_wraqgoc7f(){
 	 * more about array_key_first() : https://www.php.net/manual/en/function.array-key-first.php
 	 */
 
-	$firstKey = '' ;
+	$firstKey = '';
 
-	if(function_exists('array_key_first')){
+	if (function_exists('array_key_first')) {
 
 		$firstKey = array_key_first($contact7formlist);
+	} else {
 
-	}else{
-
-		foreach ($contact7formlist as $key => $contact7form ){
+		foreach ($contact7formlist as $key => $contact7form) {
 			$firstKey = $key;
 			break;
 		}
@@ -418,15 +418,15 @@ function aavoya_add_global_settings_data($global_settings = null)
 	if ($global_settings != null) {
 
 		$global_settings_safe = array(
-		'globalbuttonbgcolor'       => ($global_settings['globalBgColor']) ? sanitize_hex_color($global_settings['globalBgColor']) : null,
-		'globalbuttontextcolor'     => ($global_settings['globalTextColor']) ? sanitize_hex_color($global_settings['globalTextColor']) : null,
-		'globalborderradiusvalue'   => ($global_settings['globalBorderRadius']) ? intval($global_settings['globalBorderRadius']) : null,
-		'globalpaddingxvalue'       => ($global_settings['globalPaddingX']) ? intval($global_settings['globalPaddingX']) : null,
-		'globalpaddingyvalue'       => ($global_settings['globalPaddingY']) ? intval($global_settings['globalPaddingY']) : null,
-		'globalbuttonfontsize'      => ($global_settings['globalFontSize']) ? intval($global_settings['globalFontSize']) : null,
-		'globalbuttontracking'      => ($global_settings['globalTracking']) ? intval($global_settings['globalTracking']) : null,
-		'globalbuttontext'          => ($global_settings['globalText']) ? sanitize_text_field($global_settings['globalText']) : null,
-		'globalbuttoncssclass'      => ($global_settings['globalCssClass']) ? sanitize_html_class($global_settings['globalCssClass']) : null
+			'globalbuttonbgcolor'       => ($global_settings['globalBgColor']) ? sanitize_hex_color($global_settings['globalBgColor']) : null,
+			'globalbuttontextcolor'     => ($global_settings['globalTextColor']) ? sanitize_hex_color($global_settings['globalTextColor']) : null,
+			'globalborderradiusvalue'   => ($global_settings['globalBorderRadius']) ? intval($global_settings['globalBorderRadius']) : null,
+			'globalpaddingxvalue'       => ($global_settings['globalPaddingX']) ? intval($global_settings['globalPaddingX']) : null,
+			'globalpaddingyvalue'       => ($global_settings['globalPaddingY']) ? intval($global_settings['globalPaddingY']) : null,
+			'globalbuttonfontsize'      => ($global_settings['globalFontSize']) ? intval($global_settings['globalFontSize']) : null,
+			'globalbuttontracking'      => ($global_settings['globalTracking']) ? intval($global_settings['globalTracking']) : null,
+			'globalbuttontext'          => ($global_settings['globalText']) ? sanitize_text_field($global_settings['globalText']) : null,
+			'globalbuttoncssclass'      => ($global_settings['globalCssClass']) ? sanitize_html_class($global_settings['globalCssClass']) : null
 		);
 		return update_option('aavoya_wraq_global_settings', serialize($global_settings_safe));
 	}
@@ -458,6 +458,52 @@ function aavoya_get_global_data()
 			'globalbuttontext'          => ($global_style['globalbuttontext']) ? sanitize_text_field($global_style['globalbuttontext']) : null,
 			'globalbuttoncssclass'      => ($global_style['globalbuttoncssclass']) ? sanitize_text_field($global_style['globalbuttoncssclass']) : null
 		);
-
 	}
+}
+
+
+/**
+ * aavoya_global_data_to_inline_style
+ *
+ * @return void
+ */
+function aavoya_global_data_to_inline_style()
+{
+	$global_style = aavoya_get_global_data();
+
+	$global_style_inline = '';
+
+	if ($global_style['globalbuttonbgcolor']) {
+		$global_style_inline .= 'background-color:' . $global_style['globalbuttonbgcolor'] . ';';
+	}
+
+	if ($global_style['globalbuttontextcolor']) {
+		$global_style_inline .= 'color:' . $global_style['globalbuttontextcolor'] . ';';
+	}
+
+	if ($global_style['globalborderradiusvalue']) {
+		$global_style_inline .= 'border-radius:' . $global_style['globalborderradiusvalue'] . 'px;';
+	}
+
+	if ($global_style['globalpaddingxvalue']) {
+		$global_style_inline .= 'padding-left:' . $global_style['globalpaddingxvalue'] . 'px;';
+		$global_style_inline .= 'padding-right:' . $global_style['globalpaddingxvalue'] . 'px;';
+	}
+
+	if ($global_style['globalpaddingyvalue']) {
+		$global_style_inline .= 'padding-top:' . $global_style['globalpaddingyvalue'] . 'px;';
+		$global_style_inline .= 'padding-bottom:' . $global_style['globalpaddingyvalue'] . 'px;';
+	}
+
+	if ($global_style['globalbuttonfontsize']) {
+		$global_style_inline .= 'font-size:' . $global_style['globalbuttonfontsize'] . 'px;';
+	}
+
+	if ($global_style['globalbuttontracking']) {
+		$global_style_inline .= 'letter-spacing:' . $global_style['globalbuttontracking'] . 'px;';
+	}
+
+
+
+	return $global_style_inline;
 }
