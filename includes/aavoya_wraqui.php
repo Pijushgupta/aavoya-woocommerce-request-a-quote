@@ -261,11 +261,23 @@ class aavoya_wraqui extends base
 						<div class="py-2 px-2 woo-form-map-table">
 							<div id="woo-default-setting-area" class="relative ">
 								<div class="setting-appender p-2">
-									<div class="button-setting border rounded-sm shadow px-2 py-3">
-										<div class="w-1/2"><span class="text-xs tracking-wide font-medium"><?php _e('Default Button Setting', 'aavoya-woocommerce-request-a-quote'); ?></span></div>
-										<div class="w-1/2"></div>
-										<div class="w-full">
-											<div class="w-full flex flex-row realtive z-30 rounded-sm flex-wrap mt-2 bg-white setting-row ">
+									<div class="button-setting border rounded-sm shadow ">
+
+										<div class="flex flex-row items-center px-2 py-3">
+											<div class="flex justify-start w-1/2">
+												<span class="text-xs tracking-wide font-medium">
+													<?php _e('Default Button Setting', 'aavoya-woocommerce-request-a-quote'); ?>
+												</span>
+											</div>
+											<div class="flex justify-end w-1/2 showhidebuttonsetting" data-target="showhidebuttonsettingarea">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-4 h-4 text-gray-400 duration-100">
+													<path d="M10 0a10 10 0 110 20 10 10 0 010-20zM2 10a8 8 0 1016 0 8 8 0 00-16 0zm10.54.7L9 14.25l-1.41-1.41L10.4 10 7.6 7.17 9 5.76 13.24 10l-.7.7z"></path>
+												</svg>
+											</div>
+										</div>
+
+										<div class="w-full px-2 py-2 border-t showhidebuttonsettingarea" style="display:none;">
+											<div class="w-full flex flex-row realtive z-30 rounded-sm flex-wrap bg-white setting-row ">
 												<div class="setting-col p-1 md:w-1/2">
 													<lebel for="global-corner"><?php _e('Corners', 'aavoya-woocommerce-request-a-quote'); ?></lebel>
 													<input type="range" name="corners" id="global-corner" max="100" mix="0" value="<?php echo intval($globalStyleArray['globalborderradiusvalue']); ?>">
@@ -306,7 +318,7 @@ class aavoya_wraqui extends base
 													<input class="w-full" type="text" name="global-css-class" id="global-css-class" value="<?php echo sanitize_html_class($globalStyleArray['globalbuttoncssclass']); ?>">
 												</div>
 											</div>
-											<div class="w-full mt-2 border-t border-gray-100">
+											<div class="w-full mt-2 border-gray-100">
 												<button class="save-settings rounded flex ml-auto mr-0 px-8 py-2 mt-2 bg-blue-900 text-white text-xs tracking-wide font-medium"><?php _e('Save', 'aavoya-woocommerce-request-a-quote'); ?> </button>
 											</div>
 										</div>

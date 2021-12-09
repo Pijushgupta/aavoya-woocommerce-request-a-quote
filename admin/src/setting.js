@@ -33,6 +33,13 @@
 		});
 	
 	});
+	/**
+	 * @desc - This to show and hide the button setting area 
+	 */
+	jQuery(".showhidebuttonsetting").on("click", function () {
+		let showhidebuttonsettingarea = jQuery(this).attr("data-target");
+		jQuery("."+showhidebuttonsettingarea).toggle();
+	});
 
 
 })(jQuery);
