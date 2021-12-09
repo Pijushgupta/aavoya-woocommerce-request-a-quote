@@ -278,7 +278,7 @@ class aavoya_wraqui extends base
 
 										<div class="w-full px-2 py-2 border-t showhidebuttonsettingarea" style="display:none;">
 											<div class="w-full flex flex-row realtive z-30 rounded-sm flex-wrap bg-white setting-row ">
-												<div class="setting-col w-full buttonexamplediv">
+												<div class="setting-col w-full buttonexamplediv flex justify-center p-8">
 													<button class="globalpreviewbutton" style="<?php echo aavoya_global_data_to_inline_style(); ?>"><?php echo sanitize_text_field($globalStyleArray['globalbuttontext']); ?></button>
 												</div>
 												<div class="setting-col p-1 md:w-1/2">
