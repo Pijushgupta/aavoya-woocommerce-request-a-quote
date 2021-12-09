@@ -258,8 +258,8 @@ class aavoya_wraqui extends base
 							<label class="text-xs tracking-wide font-medium"><span><?php _e('Settings', 'aavoya-woocommerce-request-a-quote'); ?></label>
 						</div>
 
-						<div class="py-2 px-2 woo-form-map-table">
-							<div id="woo-default-setting-area" class="relative ">
+						<div class="py-1 px-1 ">
+							<div class="relative ">
 								<div class="setting-appender p-2">
 									<div class="button-setting border rounded-sm shadow ">
 

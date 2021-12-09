@@ -33,6 +33,7 @@
 		});
 	
 	});
+	
 	/**
 	 * @desc - This to show and hide the button setting area 
 	 */
