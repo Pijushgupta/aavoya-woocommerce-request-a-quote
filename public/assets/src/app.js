@@ -3,7 +3,8 @@
 	jQuery(".aavoyaclose").on("click", function () {
 		let modal = jQuery(".aavoyaclose").parent().parent();
 		if (!modal.hasClass("hidden")) {
-			modal.addClass("hidden"); 
+			modal.addClass("hidden");
+			modal.removeClass("flex");
 		}
 	});
 
@@ -22,6 +23,7 @@
 			if (popupModal.hasClass("hidden")) {
 
 				popupModal.removeClass("hidden");
+				popupModal.addClass("flex");
 			} 
 		});
 		
