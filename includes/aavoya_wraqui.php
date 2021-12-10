@@ -209,7 +209,7 @@ class aavoya_wraqui extends base
 							<input class="enable-wordpress-class" id="enable-wordpress-id" name="enable-wordpress" type="checkbox" <?php echo $wraqwp_checked; ?>>
 						</div>
 						<div class="py-2 px-2 wp-form-map-table">
-							<div id="wordpress-default-setting-area" class="' . $hidden . ' relative ">
+							<div id="wordpress-default-setting-area" class="<?php echo $hidden ?> relative ">
 
 								<div class="wp-appender">
 								</div>
@@ -237,7 +237,7 @@ class aavoya_wraqui extends base
 							<input class="enable-woo-class" id="enable-woo-id" name="enable-woo" type="checkbox" <?php echo $wraqwochecked; ?>>
 						</div>
 						<div class="py-2 px-2 woo-form-map-table">
-							<div id="woo-default-setting-area" class="' . $hidden . ' relative ">
+							<div id="woo-default-setting-area" class="<?php echo $hidden; ?> relative ">
 								<div class="woo-appender">
 									<?php if (aavoyaWooCom != true) {
 										_e('WooCommerce Not Installed', 'aavoya-woocommerce-request-a-quote');
