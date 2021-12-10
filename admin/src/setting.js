@@ -29,7 +29,7 @@
 			},
 			error: function (xhr, textStatus, errorThrown) { console.log(errorThrown); },
 			success: function (response) {
-				console.log(response);
+				createPositiveMessage('Settings Saved Successfully');
 			}
 
 		});
