@@ -133,8 +133,8 @@ class aavoya_wraqui extends base
 					<div class="border-l-8 border-red-600 p-4">
 
 						<div class="flex justify-between items-center mt-1">
-							<span class="block text-xs tracking-wide font-medium">Are you sure ?</span>
-							<button class="del-yes rounded px-8 py-2  bg-red-500 text-white">Yes</button>
+							<span class="block text-xs tracking-wide font-medium"><?php _e('Are you sure ?', 'aavoya-woocommerce-request-a-quote'); ?></span>
+							<button class="del-yes rounded px-8 py-2  bg-red-500 text-white"><?php _e('Yes', 'aavoya-woocommerce-request-a-quote'); ?></button>
 						</div>
 					</div>
 				</div>
