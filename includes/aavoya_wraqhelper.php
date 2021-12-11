@@ -250,15 +250,15 @@ function aavoya_gpm($id = null)
 
 	$button_post_meta_safe =  array(
 		'contact7form'      => ($button_post_meta['contact7form']) ? intval($button_post_meta['contact7form']) : null,
-		'buttonbgcolor'     => ($button_post_meta['buttonbgcolor']) ? esc_html($button_post_meta['buttonbgcolor']) : null,
-		'buttontextcolor'   => ($button_post_meta['buttontextcolor']) ? esc_html($button_post_meta['buttontextcolor']) : null,
+		'buttonbgcolor'     => ($button_post_meta['buttonbgcolor']) ? esc_attr($button_post_meta['buttonbgcolor']) : null,
+		'buttontextcolor'   => ($button_post_meta['buttontextcolor']) ? esc_attr($button_post_meta['buttontextcolor']) : null,
 		'borderradiusvalue' => ($button_post_meta['borderradiusvalue']) ? intval($button_post_meta['borderradiusvalue']) : null,
 		'paddingxvalue'     => ($button_post_meta['paddingxvalue']) ? intval($button_post_meta['paddingxvalue']) : null,
 		'paddingyvalue'     => ($button_post_meta['paddingyvalue']) ? intval($button_post_meta['paddingyvalue']) : null,
 		'buttonfontsize'    => ($button_post_meta['buttonfontsize']) ? intval($button_post_meta['buttonfontsize']) : null,
 		'buttontracking'    => ($button_post_meta['buttontracking']) ? intval($button_post_meta['buttontracking']) : null,
-		'buttontext'        => ($button_post_meta['buttontext']) ? esc_html($button_post_meta['buttontext']) : null,
-		'buttoncssclass'    => ($button_post_meta['buttoncssclass']) ? esc_html($button_post_meta['buttoncssclass']) : null
+		'buttontext'        => ($button_post_meta['buttontext']) ? esc_textarea($button_post_meta['buttontext']) : null,
+		'buttoncssclass'    => ($button_post_meta['buttoncssclass']) ? esc_textarea($button_post_meta['buttoncssclass']) : null
 	);
 
 	return $button_post_meta_safe;
@@ -448,15 +448,15 @@ function aavoya_get_global_data()
 		$global_style = unserialize(get_option('aavoya_wraq_global_settings'));
 
 		return array(
-			'globalbuttonbgcolor'       => ($global_style['globalbuttonbgcolor']) ? esc_html($global_style['globalbuttonbgcolor']) : null,
-			'globalbuttontextcolor'     => ($global_style['globalbuttontextcolor']) ? esc_html($global_style['globalbuttontextcolor']) : null,
+			'globalbuttonbgcolor'       => ($global_style['globalbuttonbgcolor']) ? esc_attr($global_style['globalbuttonbgcolor']) : null,
+			'globalbuttontextcolor'     => ($global_style['globalbuttontextcolor']) ? esc_attr($global_style['globalbuttontextcolor']) : null,
 			'globalborderradiusvalue'   => ($global_style['globalborderradiusvalue']) ? intval($global_style['globalborderradiusvalue']) : null,
 			'globalpaddingxvalue'       => ($global_style['globalpaddingxvalue']) ? intval($global_style['globalpaddingxvalue']) : null,
 			'globalpaddingyvalue'       => ($global_style['globalpaddingyvalue']) ? intval($global_style['globalpaddingyvalue']) : null,
 			'globalbuttonfontsize'      => ($global_style['globalbuttonfontsize']) ? intval($global_style['globalbuttonfontsize']) : null,
 			'globalbuttontracking'      => ($global_style['globalbuttontracking']) ? intval($global_style['globalbuttontracking']) : null,
-			'globalbuttontext'          => ($global_style['globalbuttontext']) ? esc_html($global_style['globalbuttontext']) : null,
-			'globalbuttoncssclass'      => ($global_style['globalbuttoncssclass']) ? esc_html($global_style['globalbuttoncssclass']) : null
+			'globalbuttontext'          => ($global_style['globalbuttontext']) ? esc_textarea($global_style['globalbuttontext']) : null,
+			'globalbuttoncssclass'      => ($global_style['globalbuttoncssclass']) ? esc_textarea($global_style['globalbuttoncssclass']) : null
 		);
 	}
 }

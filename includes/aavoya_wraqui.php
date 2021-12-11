@@ -115,7 +115,7 @@ class aavoya_wraqui extends base
 	{ ?>
 
 		<input type="hidden" name="awraq_nonce" id="awraqnonce" value="<?php echo wp_create_nonce("awraq_nonce"); ?>">
-		<input type="hidden" name="awraq_woocom" id="awraqwoocom" value="<?php echo esc_html(aavoyaWooCom); ?>">
+		<input type="hidden" name="awraq_woocom" id="awraqwoocom" value="<?php echo esc_attr(aavoyaWooCom); ?>">
 		<header class="header">
 			<div class="header-item">
 				<span class="title"><strong class="font-bold">Aavoya</strong> Request a Quote</span>
@@ -206,10 +206,10 @@ class aavoya_wraqui extends base
 					<div class="wordpress-form-area">
 						<div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
 							<label class="text-xs tracking-wide font-medium" for="enable-wordpress-id"><span><?php _e('Enable Buttons.', 'aavoya-woocommerce-request-a-quote'); ?></label>
-							<input class="enable-wordpress-class" id="enable-wordpress-id" name="enable-wordpress" type="checkbox" <?php echo esc_html($wraqwp_checked); ?>>
+							<input class="enable-wordpress-class" id="enable-wordpress-id" name="enable-wordpress" type="checkbox" <?php echo esc_attr($wraqwp_checked); ?>>
 						</div>
 						<div class="py-2 px-2 wp-form-map-table">
-							<div id="wordpress-default-setting-area" class="<?php echo esc_html($hidden); ?> relative ">
+							<div id="wordpress-default-setting-area" class="<?php echo esc_attr($hidden); ?> relative ">
 
 								<div class="wp-appender">
 								</div>
@@ -234,10 +234,10 @@ class aavoya_wraqui extends base
 					<div class="woo-form-area">
 						<div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
 							<label class="text-xs tracking-wide font-medium" for="enable-woo-id"><span><?php _e('Enable for Woocommerce.', 'aavoya-woocommerce-request-a-quote'); ?></label>
-							<input class="enable-woo-class" id="enable-woo-id" name="enable-woo" type="checkbox" <?php echo esc_html($wraqwochecked); ?>>
+							<input class="enable-woo-class" id="enable-woo-id" name="enable-woo" type="checkbox" <?php echo esc_attr($wraqwochecked); ?>>
 						</div>
 						<div class="py-2 px-2 woo-form-map-table">
-							<div id="woo-default-setting-area" class="<?php echo esc_html($hidden); ?> relative ">
+							<div id="woo-default-setting-area" class="<?php echo esc_attr($hidden); ?> relative ">
 								<div class="woo-appender">
 									<?php if (aavoyaWooCom != true) {
 										_e('WooCommerce not installed', 'aavoya-woocommerce-request-a-quote');
@@ -287,7 +287,7 @@ class aavoya_wraqui extends base
 												</div>
 												<div class="setting-col p-1 md:w-1/2">
 													<label class="block" for="global-b-text"><?php _e('Text', 'aavoya-woocommerce-request-a-quote'); ?></label>
-													<input class="w-full" type="text" id="global-b-text" name="buttontext" value="<?php echo esc_html($globalStyleArray['globalbuttontext']); ?>">
+													<input class="w-full" type="text" id="global-b-text" name="buttontext" value="<?php echo esc_textarea($globalStyleArray['globalbuttontext']); ?>">
 												</div>
 												<div class="setting-col p-1 md:w-1/2">
 													<label for="global-padding-x"><?php _e('Padding X', 'aavoya-woocommerce-request-a-quote'); ?></label>
@@ -309,16 +309,16 @@ class aavoya_wraqui extends base
 												<div class="setting-col p-1 md:w-1/2 flex flex-wrap flex-row">
 													<div class="sub-setting-col  md:w-1/2">
 														<label class="block" forn="global-background-color"><?php _e('Background Color', 'aavoya-woocommerce-request-a-quote'); ?></label>
-														<input type="color" name="global-background-color" id="global-background-color" value="<?php echo esc_html($globalStyleArray['globalbuttonbgcolor']); ?>">
+														<input type="color" name="global-background-color" id="global-background-color" value="<?php echo esc_attr($globalStyleArray['globalbuttonbgcolor']); ?>">
 													</div>
 													<div class="sub-setting-col md:w-1/2">
 														<label class="block" for="global-text-color"><?php _e('Text color', 'aavoya-woocommerce-request-a-quote'); ?></label>
-														<input type="color" name="global-text-color" id="global-text-color" value="<?php echo esc_html($globalStyleArray['globalbuttontextcolor']); ?>">
+														<input type="color" name="global-text-color" id="global-text-color" value="<?php echo esc_attr($globalStyleArray['globalbuttontextcolor']); ?>">
 													</div>
 												</div>
 												<div class="setting-col p-1 md:w-1/2">
 													<label class="block" for="global-css-class"><?php _e('Css class', 'aavoya-woocommerce-request-a-quote'); ?></label>
-													<input class="w-full" type="text" name="global-css-class" id="global-css-class" value="<?php echo esc_html($globalStyleArray['globalbuttoncssclass']); ?>">
+													<input class="w-full" type="text" name="global-css-class" id="global-css-class" value="<?php echo esc_textarea($globalStyleArray['globalbuttoncssclass']); ?>">
 												</div>
 											</div>
 											<div class="w-full mt-2 border-gray-100">
