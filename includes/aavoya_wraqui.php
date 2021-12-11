@@ -240,7 +240,7 @@ class aavoya_wraqui extends base
 							<div id="woo-default-setting-area" class="<?php echo $hidden; ?> relative ">
 								<div class="woo-appender">
 									<?php if (aavoyaWooCom != true) {
-										_e('WooCommerce Not Installed', 'aavoya-woocommerce-request-a-quote');
+										_e('WooCommerce not installed', 'aavoya-woocommerce-request-a-quote');
 									} ?>
 								</div>
 							</div>
