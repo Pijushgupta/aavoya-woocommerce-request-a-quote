@@ -115,7 +115,7 @@ class aavoya_wraqui extends base
 	{ ?>
 
 		<input type="hidden" name="awraq_nonce" id="awraqnonce" value="<?php echo wp_create_nonce("awraq_nonce"); ?>">
-		<input type="hidden" name="awraq_woocom" id="awraqwoocom" value="<?php echo aavoyaWooCom; ?>">
+		<input type="hidden" name="awraq_woocom" id="awraqwoocom" value="<?php echo esc_html(aavoyaWooCom); ?>">
 		<header class="header">
 			<div class="header-item">
 				<span class="title"><strong class="font-bold">Aavoya</strong> Request a Quote</span>
@@ -206,10 +206,10 @@ class aavoya_wraqui extends base
 					<div class="wordpress-form-area">
 						<div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
 							<label class="text-xs tracking-wide font-medium" for="enable-wordpress-id"><span><?php _e('Enable Buttons.', 'aavoya-woocommerce-request-a-quote'); ?></label>
-							<input class="enable-wordpress-class" id="enable-wordpress-id" name="enable-wordpress" type="checkbox" <?php echo $wraqwp_checked; ?>>
+							<input class="enable-wordpress-class" id="enable-wordpress-id" name="enable-wordpress" type="checkbox" <?php echo esc_html($wraqwp_checked); ?>>
 						</div>
 						<div class="py-2 px-2 wp-form-map-table">
-							<div id="wordpress-default-setting-area" class="<?php echo $hidden ?> relative ">
+							<div id="wordpress-default-setting-area" class="<?php echo esc_html($hidden); ?> relative ">
 
 								<div class="wp-appender">
 								</div>
@@ -234,10 +234,10 @@ class aavoya_wraqui extends base
 					<div class="woo-form-area">
 						<div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
 							<label class="text-xs tracking-wide font-medium" for="enable-woo-id"><span><?php _e('Enable for Woocommerce.', 'aavoya-woocommerce-request-a-quote'); ?></label>
-							<input class="enable-woo-class" id="enable-woo-id" name="enable-woo" type="checkbox" <?php echo $wraqwochecked; ?>>
+							<input class="enable-woo-class" id="enable-woo-id" name="enable-woo" type="checkbox" <?php echo esc_html($wraqwochecked); ?>>
 						</div>
 						<div class="py-2 px-2 woo-form-map-table">
-							<div id="woo-default-setting-area" class="<?php echo $hidden; ?> relative ">
+							<div id="woo-default-setting-area" class="<?php echo esc_html($hidden); ?> relative ">
 								<div class="woo-appender">
 									<?php if (aavoyaWooCom != true) {
 										_e('WooCommerce not installed', 'aavoya-woocommerce-request-a-quote');
@@ -279,7 +279,7 @@ class aavoya_wraqui extends base
 										<div class="w-full px-2 py-2 border-t showhidebuttonsettingarea" style="display:none;">
 											<div class="w-full flex flex-row realtive z-30 rounded-sm flex-wrap bg-white setting-row ">
 												<div class="setting-col w-full buttonexamplediv flex justify-center p-8">
-													<button class="globalpreviewbutton" style="<?php echo aavoya_global_data_to_inline_style(); ?>"><?php echo esc_html($globalStyleArray['globalbuttontext']); ?></button>
+													<button class="globalpreviewbutton" style="<?php echo esc_html(aavoya_global_data_to_inline_style()); ?>"><?php echo esc_html($globalStyleArray['globalbuttontext']); ?></button>
 												</div>
 												<div class="setting-col p-1 md:w-1/2">
 													<lebel for="global-corner"><?php _e('Corners', 'aavoya-woocommerce-request-a-quote'); ?></lebel>
