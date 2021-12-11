@@ -279,7 +279,7 @@ class aavoya_wraqui extends base
 										<div class="w-full px-2 py-2 border-t showhidebuttonsettingarea" style="display:none;">
 											<div class="w-full flex flex-row realtive z-30 rounded-sm flex-wrap bg-white setting-row ">
 												<div class="setting-col w-full buttonexamplediv flex justify-center p-8">
-													<button class="globalpreviewbutton" style="<?php echo aavoya_global_data_to_inline_style(); ?>"><?php echo sanitize_text_field($globalStyleArray['globalbuttontext']); ?></button>
+													<button class="globalpreviewbutton" style="<?php echo aavoya_global_data_to_inline_style(); ?>"><?php echo esc_html($globalStyleArray['globalbuttontext']); ?></button>
 												</div>
 												<div class="setting-col p-1 md:w-1/2">
 													<lebel for="global-corner"><?php _e('Corners', 'aavoya-woocommerce-request-a-quote'); ?></lebel>
@@ -287,7 +287,7 @@ class aavoya_wraqui extends base
 												</div>
 												<div class="setting-col p-1 md:w-1/2">
 													<label class="block" for="global-b-text"><?php _e('Text', 'aavoya-woocommerce-request-a-quote'); ?></label>
-													<input class="w-full" type="text" id="global-b-text" name="buttontext" value="<?php echo sanitize_text_field($globalStyleArray['globalbuttontext']); ?>">
+													<input class="w-full" type="text" id="global-b-text" name="buttontext" value="<?php echo esc_html($globalStyleArray['globalbuttontext']); ?>">
 												</div>
 												<div class="setting-col p-1 md:w-1/2">
 													<label for="global-padding-x"><?php _e('Padding X', 'aavoya-woocommerce-request-a-quote'); ?></label>
@@ -309,16 +309,16 @@ class aavoya_wraqui extends base
 												<div class="setting-col p-1 md:w-1/2 flex flex-wrap flex-row">
 													<div class="sub-setting-col  md:w-1/2">
 														<label class="block" forn="global-background-color"><?php _e('Background Color', 'aavoya-woocommerce-request-a-quote'); ?></label>
-														<input type="color" name="global-background-color" id="global-background-color" value="<?php echo sanitize_hex_color($globalStyleArray['globalbuttonbgcolor']); ?>">
+														<input type="color" name="global-background-color" id="global-background-color" value="<?php echo esc_html($globalStyleArray['globalbuttonbgcolor']); ?>">
 													</div>
 													<div class="sub-setting-col md:w-1/2">
 														<label class="block" for="global-text-color"><?php _e('Text color', 'aavoya-woocommerce-request-a-quote'); ?></label>
-														<input type="color" name="global-text-color" id="global-text-color" value="<?php echo sanitize_hex_color($globalStyleArray['globalbuttontextcolor']); ?>">
+														<input type="color" name="global-text-color" id="global-text-color" value="<?php echo esc_html($globalStyleArray['globalbuttontextcolor']); ?>">
 													</div>
 												</div>
 												<div class="setting-col p-1 md:w-1/2">
 													<label class="block" for="global-css-class"><?php _e('Css class', 'aavoya-woocommerce-request-a-quote'); ?></label>
-													<input class="w-full" type="text" name="global-css-class" id="global-css-class" value="<?php echo sanitize_html_class($globalStyleArray['globalbuttoncssclass']); ?>">
+													<input class="w-full" type="text" name="global-css-class" id="global-css-class" value="<?php echo esc_html($globalStyleArray['globalbuttoncssclass']); ?>">
 												</div>
 											</div>
 											<div class="w-full mt-2 border-gray-100">
