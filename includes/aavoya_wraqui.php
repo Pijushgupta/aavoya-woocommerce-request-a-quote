@@ -186,6 +186,13 @@ class aavoya_wraqui extends base
 						</svg>
 						<?php _e('Settings', 'aavoya-woocommerce-request-a-quote'); ?>
 					</li>
+					<li data-target="aavoya-wraq-help" class="aavoya-wraq-tab">
+						<svg xmlns="http://www.w3.org/2000/svg" class="svg-class" viewBox="0 0 20 20">
+							<path d="M17.16 6.42a8.03 8.03 0 0 0-3.58-3.58l-1.34 2.69a5.02 5.02 0 0 1 2.23 2.23l2.69-1.34zm0 7.16l-2.69-1.34a5.02 5.02 0 0 1-2.23 2.23l1.34 2.69a8.03 8.03 0 0 0 3.58-3.58zM6.42 2.84a8.03 8.03 0 0 0-3.58 3.58l2.69 1.34a5.02 5.02 0 0 1 2.23-2.23L6.42 2.84zM2.84 13.58a8.03 8.03 0 0 0 3.58 3.58l1.34-2.69a5.02 5.02 0 0 1-2.23-2.23l-2.69 1.34zM10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+						</svg>
+						<?php _e('Help', 'aavoya-woocommerce-request-a-quote'); ?>
+					</li>
+
 					<!-- left hand side vertical navigation bar ends here -->
 				</ul>
 			</div>
@@ -333,6 +340,35 @@ class aavoya_wraqui extends base
 							</div>
 						</div>
 
+					</div>
+				</div>
+
+				<div id="aavoya-wraq-help" class="hidden tab-body-area border w-full bg-white">
+					<div class="help-area">
+						<div class="mt-2 border-b border-gray-100 py-3 px-6 flex items-center justify-between">
+							<label class="text-xs tracking-wide font-medium"><span><?php _e('Help', 'aavoya-woocommerce-request-a-quote'); ?></label>
+						</div>
+						<div class="py-1 px-1 ">
+							<div class="relative ">
+								<div class="help-appender p-2">
+									<div class="creating-buttons border rounded-sm shadow">
+										<div class="flex flex-row items-center px-2 py-3">
+											<div class="flex justify-start w-1/2">
+												<span class="text-xs tracking-wide font-medium">
+													<?php _e('Creating a Button', 'aavoya-woocommerce-request-a-quote'); ?>
+												</span>
+											</div>
+											<div class="flex justify-end w-1/2 showhidebuttonsetting cursor-pointer" data-target="showhidebuttonsettingarea">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-4 h-4 text-gray-400 duration-100">
+													<path d="M10 0a10 10 0 110 20 10 10 0 010-20zM2 10a8 8 0 1016 0 8 8 0 00-16 0zm10.54.7L9 14.25l-1.41-1.41L10.4 10 7.6 7.17 9 5.76 13.24 10l-.7.7z"></path>
+												</svg>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
