@@ -276,14 +276,14 @@ class aavoya_wraqui extends base
 													<?php _e('Default Button Setting', 'aavoya-woocommerce-request-a-quote'); ?>
 												</span>
 											</div>
-											<div class="flex justify-end w-1/2 showhidebuttonsetting cursor-pointer" data-target="showhidebuttonsettingarea">
+											<div class="flex justify-end w-1/2 showhideaccordion cursor-pointer" data-target="showhidebuttonsettingarea">
 												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-4 h-4 text-gray-400 duration-100">
 													<path d="M10 0a10 10 0 110 20 10 10 0 010-20zM2 10a8 8 0 1016 0 8 8 0 00-16 0zm10.54.7L9 14.25l-1.41-1.41L10.4 10 7.6 7.17 9 5.76 13.24 10l-.7.7z"></path>
 												</svg>
 											</div>
 										</div>
 
-										<div class="w-full px-2 py-2 border-t showhidebuttonsettingarea" style="display:none;">
+										<div class="w-full px-2 py-2 border-t " id="showhidebuttonsettingarea" style="display:none;">
 											<div class="w-full flex flex-row realtive z-30 rounded-sm flex-wrap bg-white setting-row ">
 												<div class="setting-col w-full buttonexamplediv flex justify-center p-8">
 													<button class="globalpreviewbutton" style="<?php echo esc_html(aavoya_global_data_to_inline_style()); ?>"><?php echo esc_html($globalStyleArray['globalbuttontext']); ?></button>
@@ -352,17 +352,25 @@ class aavoya_wraqui extends base
 							<div class="relative ">
 								<div class="help-appender p-2">
 									<div class="creating-buttons border rounded-sm shadow">
+
 										<div class="flex flex-row items-center px-2 py-3">
 											<div class="flex justify-start w-1/2">
 												<span class="text-xs tracking-wide font-medium">
 													<?php _e('Creating a Button', 'aavoya-woocommerce-request-a-quote'); ?>
 												</span>
 											</div>
-											<div class="flex justify-end w-1/2 showhidebuttonsetting cursor-pointer" data-target="showhidebuttonsettingarea">
+											<div class="flex justify-end w-1/2 showhideaccordion cursor-pointer" data-target="showhidecreateanddeleteabutton">
 												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-4 h-4 text-gray-400 duration-100">
 													<path d="M10 0a10 10 0 110 20 10 10 0 010-20zM2 10a8 8 0 1016 0 8 8 0 00-16 0zm10.54.7L9 14.25l-1.41-1.41L10.4 10 7.6 7.17 9 5.76 13.24 10l-.7.7z"></path>
 												</svg>
 											</div>
+										</div>
+
+										<div class="w-full px-2 py-2 border-t" id="showhidecreateanddeleteabutton" style="display:none;">
+											<div class="w-full flex flex-row realtive z-30 rounded-sm flex-wrap bg-white setting-row ">
+												<iframe width="560" height="315" src="https://www.youtube.com/embed/JHdNQgGNJEE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+											</div>
+
 										</div>
 
 									</div>

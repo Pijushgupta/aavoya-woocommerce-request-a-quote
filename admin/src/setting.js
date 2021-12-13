@@ -40,8 +40,8 @@
 	 * @desc - This to show and hide the button setting area 
 	 */
 	jQuery(".showhidebuttonsetting").on("click", function () {
-		let showhidebuttonsettingarea = jQuery(this).attr("data-target");
-		jQuery("." + showhidebuttonsettingarea).toggle();
+		let toshow = jQuery(this).attr("data-target");
+		jQuery("#" + toshow).toggle();
 		jQuery(this).find("svg").toggleClass("transform rotate-90");
 	});
 
